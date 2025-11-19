@@ -48,6 +48,7 @@
 
     .name { font-size: 34px; font-weight: 800; line-height: 1.2; }
 
+    nav { position: relative; }
     nav a {
       display: block; margin: 15px 0;
       text-decoration: none; color: var(--text);
@@ -57,6 +58,7 @@
     nav a:hover {
       color: var(--accent);
       transform: translateX(6px);
+      text-shadow: 0 0 8px var(--accent);
     }
 
     .resume-btn {
@@ -92,6 +94,7 @@
     h1 { font-size: 42px; margin-bottom: 15px; }
     h2 { font-size: 24px; margin-bottom: 10px; color: var(--accent); }
     p  { font-size: 18px; line-height: 1.6; max-width: 800px; opacity: 0.9; }
+    a.link { color: var(--accent); text-decoration: underline; }
 
     /* Job Cards */
     .job-card {
@@ -112,14 +115,6 @@
 
     .job-title { font-size: 20px; font-weight: 700; }
     .company   { font-size: 15px; opacity: 0.7; margin-bottom: 6px; }
-
-    /* Contact links */
-    .contact-link {
-      color: #1d4ed8;
-      text-decoration: underline;
-      transition: 0.2s;
-    }
-    .contact-link:hover { color: #2563eb; }
 
     /* Back to Top */
     #backToTop {
@@ -142,18 +137,25 @@
       box-shadow: 0 0 18px var(--accent2);
     }
 
-    /* Timeline dot hover */
-    .timeline-dot:hover {
-      transform: scale(1.4);
-      background: var(--accent);
-      box-shadow: 0 0 12px var(--accent);
-    }
+    /* Timeline */
+    .timeline-dot:hover { transform: scale(1.4); background: var(--accent); box-shadow: 0 0 12px var(--accent); }
 
-    /* Fade‑in animation */
     .fade-section { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
     .fade-visible { opacity: 1; transform: translateY(0); }
 
-    /* Parallax hero */
+    /* Sidebar indicator */
+    .active-indicator {
+      position: absolute;
+      left: -12px;
+      width: 4px;
+      height: 20px;
+      background: var(--accent);
+      border-radius: 4px;
+      transform: translateY(0);
+      transition: transform 0.3s ease, height 0.3s ease;
+    }
+
+    /* Parallax Hero */
     .parallax-hero {
       background-image: url('https://images.unsplash.com/photo-1527443224154-d54f4f0e7f32');
       background-attachment: fixed;
@@ -169,7 +171,6 @@
       text-shadow: 0 4px 10px rgba(0,0,0,0.6);
     }
 
-    /* Stagger animation */
     .stagger { opacity: 0; transform: translateY(20px); transition: all .6s ease; }
     .stagger.visible { opacity: 1; transform: translateY(0); }
   </style>
@@ -177,19 +178,23 @@
 
 <body>
 <div id="scroll-progress"></div>
-<div class="parallax-hero">Sean Tan</div>
+<div class="parallax-hero" id="hero">Sean Tan</div>
 
 <div class="sidebar">
   <div class="name">Sean<br>Tan</div>
+
   <nav>
+    <div class="active-indicator"></div>
     <ul>
-      <li><a href="#home">Home</a></li>
+      <li><a href="#hero">Home</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
-      <li><a href="https://www.linkedin.com/in/sean-s-tan/" target="_blank">LinkedIn</a></li>
-      <li><a href="https://drive.google.com/file/d/1aOA_ybkdGNjQ6aEqpNvFY6koMiox4PzK/view?usp=sharing" target="_blank">Resume</a></li>
+      <li><a class="link" href="https://www.linkedin.com/in/sean-s-tan/" target="_blank">LinkedIn</a></li>
+      <li><a class="link" href="mailto:tansean415@gmail.com">Email</a></li>
+      <li><a class="link" href="https://drive.google.com/file/d/1aOA_ybkdGNjQ6aEqpNvFY6koMiox4PzK/view?usp=sharing" target="_blank">Resume</a></li>
     </ul>
   </nav>
+
   <a class="resume-btn" href="https://drive.google.com/file/d/1aOA_ybkdGNjQ6aEqpNvFY6koMiox4PzK/view?usp=sharing" target="_blank">View Resume</a>
 </div>
 
@@ -207,11 +212,7 @@
         <div class="timeline-content job-card">
           <div class="job-title">Information Technology Field Technician</div>
           <div class="company">University of California, San Francisco — Sep 2025 to Nov 2025 · 3 mos</div>
-          <p>• Delivered on-site IT support for 1,000+ staff.<br>
-          • Installed and troubleshot EPIC Hyperspace and secure access tools.<br>
-          • Managed Duo Admin, AD, LAPS UI, ServiceNow, and System Pulse.<br>
-          • Supported mobile device management through Microsoft Intune.<br>
-          • Maintained hospital workstation, Zebra printer, and Cisco phone reliability.</p>
+          <p>• Delivered on-site IT support for 1,000+ staff.<br>• Installed EPIC Hyperspace & secure access tools.<br>• Managed Duo Admin, AD, LAPS UI, ServiceNow, System Pulse.<br>• Supported Microsoft Intune MDM.<br>• Maintained workstations, printers, and phones.</p>
         </div>
       </div>
       <div class="timeline-item">
@@ -219,10 +220,7 @@
         <div class="timeline-content job-card">
           <div class="job-title">EPIC TDR Analyst</div>
           <div class="company">University of California, San Francisco — Aug 2025 to Sep 2025 · 2 mos</div>
-          <p>• Performed EPIC Technical Dress Rehearsal readiness testing.<br>
-          • Validated Zebra printers, barcode scanners, kiosks, and WOWs.<br>
-          • Configured VPSX printing for EPIC workflows.<br>
-          • Collaborated with IT/clinical teams to ensure smooth go‑live.</p>
+          <p>• Performed EPIC Technical Dress Rehearsal readiness testing.<br>• Validated printers, barcode scanners, kiosks, WOWs.<br>• Configured VPSX printing.<br>• Collaborated with IT/clinical teams to ensure smooth go-live.</p>
         </div>
       </div>
       <div class="timeline-item">
@@ -230,10 +228,7 @@
         <div class="timeline-content job-card">
           <div class="job-title">Desktop Deployment Tech</div>
           <div class="company">UCSF Benioff Children's Hospitals — May 2025 to Aug 2025 · 4 mos</div>
-          <p>• Deployed and imaged 500+ Dell AIO & Cybernet medical PCs.<br>
-          • Configured AD accounts, printers, EPIC Hyperspace, Imprivata.<br>
-          • Maintained large‑scale inventory and asset tracking.<br>
-          • Scheduled deployments minimizing workflow disruption.</p>
+          <p>• Deployed & imaged 500+ medical PCs.<br>• Configured AD, printers, EPIC Hyperspace, Imprivata.<br>• Maintained inventory & asset tracking.<br>• Scheduled deployments with minimal disruption.</p>
         </div>
       </div>
       <div class="timeline-item">
@@ -241,9 +236,7 @@
         <div class="timeline-content job-card">
           <div class="job-title">IT Technician</div>
           <div class="company">Self-Employed — Jun 2022 to May 2025 · 3 yrs</div>
-          <p>• Provided IT consulting, server setup, data recovery, networking.<br>
-          • Configured Windows/macOS systems and optimized performance.<br>
-          • Communicated solutions clearly to non‑technical clients.</p>
+          <p>• Provided IT consulting, server setup, data recovery, networking.<br>• Configured Windows/macOS systems & optimized performance.<br>• Communicated solutions clearly to clients.</p>
         </div>
       </div>
       <div class="timeline-item">
@@ -251,78 +244,92 @@
         <div class="timeline-content job-card">
           <div class="job-title">Information Technology Support Specialist</div>
           <div class="company">San Francisco State University — Feb 2022 to May 2025 · 3 yrs 4 mos</div>
-          <p>• Supported faculty, staff, and students across Windows/macOS.<br>
-          • Installed software, VPNs, and performed system optimization.<br>
-          • Onboarded/offboarded users via AD and secure provisioning.<br>
-          • Troubleshot hardware, networking, and classroom tech.</p>
+          <p>• Supported faculty, staff, students on Windows/macOS.<br>• Installed software & VPNs.<br>• Managed AD onboarding/offboarding.<br>• Troubleshot hardware, networking, and classroom tech.</p>
         </div>
       </div>
     </div>
   </section>
 
   <section id="projects" class="fade-section">
-    <h2 class="section-title">Project Experience</h2>
+    <h2>Project Experience</h2>
     <div class="project-card stagger">
       <h3>Dignity Health To UCSF Go-Live</h3>
       <p><strong>Oct 2025 – Oct 2025</strong></p>
       <p><em>Associated with University of California, San Francisco</em></p>
-      <p>Supported the migration of Dignity Health systems to UCSF, ensuring a smooth go-live for clinical applications. Worked closely with IT teams to configure user access, validate workflows, and troubleshoot issues in EPIC Hyperspace and Imprivata. Assisted with end-user training, account setup, and security checks to ensure compliance and operational continuity.</p>
+      <p>Supported migration of Dignity Health systems to UCSF. Configured user access, validated workflows, troubleshot EPIC & Imprivata, assisted with training and security compliance.</p>
     </div>
   </section>
 
   <section id="contact">
     <h1>Contact</h1>
-    <p>Email: <b><a href="mailto:tansean415@gmail.com" class="contact-link">tansean415@gmail.com</a></b></p>
-    <p>LinkedIn: <b><a href="https://www.linkedin.com/in/sean-s-tan/" target="_blank" class="contact-link">/in/sean-s-tan</a></b></p>
+    <p>Email: <a class="link" href="mailto:tansean415@gmail.com">tansean415@gmail.com</a></p>
+    <p>LinkedIn: <a class="link" href="https://www.linkedin.com/in/sean-s-tan/" target="_blank">/in/sean-s-tan</a></p>
     <p>Phone: <b>(415) 377-4965</b></p>
   </section>
 </div>
 
-<button id="backToTop" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">▲ Top</button>
+<button id="backToTop">▲ Top</button>
 
 <script>
-  // Back to top
-  const btn = document.getElementById('backToTop');
-  window.addEventListener('scroll', () => { btn.style.display = window.scrollY > 300 ? 'block' : 'none'; });
+const topBtn = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  topBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+});
+topBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
-  // Sidebar link highlight
-  const sections = document.querySelectorAll('section');
-  const navLinks = document.querySelectorAll('.sidebar nav a');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 120;
-      const sectionHeight = section.clientHeight;
-      if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) current = section.getAttribute('id');
-    });
-    navLinks.forEach(link => {
-      link.classList.remove('active-link');
-      if (link.getAttribute('href') === `#${current}`) link.classList.add('active-link');
-    });
+// Sidebar indicator & highlight links
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.sidebar nav a');
+const indicator = document.querySelector('.active-indicator');
+
+function updateIndicator() {
+  const active = document.querySelector('.sidebar nav a.active-link');
+  if (active) {
+    const rect = active.getBoundingClientRect();
+    const sidebarRect = document.querySelector('.sidebar').getBoundingClientRect();
+    indicator.style.height = rect.height + 'px';
+    indicator.style.transform = `translateY(${rect.top - sidebarRect.top}px)`;
+  }
+}
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 120;
+    const sectionHeight = section.clientHeight;
+    if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
+      current = section.getAttribute('id');
+    }
   });
+  navLinks.forEach(link => link.classList.remove('active-link'));
+  navLinks.forEach(link => { if (link.getAttribute('href') === `#${current}`) link.classList.add('active-link'); });
+  updateIndicator();
+});
 
-  // Fade-in on scroll
-  const faders = document.querySelectorAll('section');
-  const appearOptions = { threshold: 0.2 };
-  const appearOnScroll = new IntersectionObserver(entries => {
-    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('fade-visible'); });
-  }, appearOptions);
-  faders.forEach(sec => sec.classList.add('fade-section'));
-  faders.forEach(sec => appearOnScroll.observe(sec));
+window.addEventListener('resize', updateIndicator);
+setTimeout(updateIndicator, 400);
 
-  // Stagger animation
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
-  }, {threshold: 0.2});
-  document.querySelectorAll('.stagger').forEach(el => observer.observe(el));
+// Fade-in & stagger animations
+const faders = document.querySelectorAll('section');
+const appearOptions = { threshold: 0.2 };
+const appearOnScroll = new IntersectionObserver(entries => {
+  entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('fade-visible'); });
+}, appearOptions);
+faders.forEach(sec => sec.classList.add('fade-section'));
+faders.forEach(sec => appearOnScroll.observe(sec));
 
-  // Scroll progress bar
-  window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY;
-    const docHeight = document.body.scrollHeight - window.innerHeight;
-    const progress = (scrollTop / docHeight) * 100;
-    document.getElementById('scroll-progress').style.width = progress + '%';
-  });
+const staggerObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+}, {threshold: 0.2});
+document.querySelectorAll('.stagger').forEach(el => staggerObserver.observe(el));
+
+// Scroll progress bar
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.body.scrollHeight - window.innerHeight;
+  const progress = (scrollTop / docHeight) * 100;
+  document.getElementById('scroll-progress').style.width = progress + '%';
+});
 </script>
 </body>
 </html>
