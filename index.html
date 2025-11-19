@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sean Tan | Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Esteban&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
@@ -16,8 +17,21 @@
   --accent2: #7f5cff;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: "Inter", sans-serif; }
-body { background: var(--bg); color: var(--text); display: flex; height: 100vh; overflow: hidden; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Fonts */
+body { 
+  background: var(--bg); 
+  color: var(--text); 
+  display: flex; 
+  height: 100vh; 
+  overflow: hidden; 
+  font-family: 'Inter', sans-serif; 
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Esteban', serif;
+}
 
 /* Sidebar */
 .sidebar {
@@ -39,13 +53,24 @@ body { background: var(--bg); color: var(--text); display: flex; height: 100vh; 
   text-decoration: none;
   color: var(--text);
   font-size: 18px;
-  transition: 0.25s;
+  transition: 0.3s ease;
+  position: relative;
 }
 
-.sidebar nav a:hover {
-  color: var(--accent);
-  transform: translateX(6px);
-  text-shadow: 0 0 8px var(--accent);
+.sidebar nav a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+}
+
+.sidebar nav a:hover::after {
+  width: 100%;
 }
 
 .sidebar .resume-btn {
@@ -77,6 +102,7 @@ section {
   margin-bottom: 100px;
 }
 
+/* Job/project/certification card hover effect */
 .job-card {
   background: var(--card);
   padding: 20px;
@@ -84,6 +110,13 @@ section {
   margin: 15px 0;
   border: 1px solid #222;
   max-width: 750px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.job-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(79, 124, 255, 0.5);
+  border-color: var(--accent);
 }
 
 /* Certification icon styling */
@@ -91,6 +124,18 @@ section {
   color: var(--accent);
   margin-right: 10px;
   font-size: 20px;
+}
+
+/* Fade-in animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 </style>
 </head>
@@ -128,7 +173,7 @@ section {
 <!-- ABOUT -->
 <section id="about">
   <h1>About Me</h1>
-  <p>I provide IT solutions for businesses and clients, specializing in system administration, troubleshooting, deployments, and security best practices. Outside of work, I enjoy video games, running, and lifting</p>
+  <p>I provide IT solutions for businesses and clients, specializing in system administration, troubleshooting, deployments, and security best practices. Outside of work, I enjoy video games, running, and lifting.</p>
 </section>
 
 <!-- WORK EXPERIENCE -->
@@ -229,5 +274,27 @@ section {
 </section>
 
 </div>
+
+<!-- Scroll Animation Script -->
+<script>
+const sections = document.querySelectorAll('section');
+
+function revealOnScroll() {
+  const windowBottom = window.innerHeight;
+  sections.forEach(section => {
+    const sectionTop = section.getBoundingClientRect().top;
+    if(sectionTop < windowBottom - 100) {
+      section.classList.add('visible');
+    }
+  });
+}
+
+// Initialize fade-in
+sections.forEach(section => section.classList.add('fade-in'));
+
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+</script>
+
 </body>
 </html>
