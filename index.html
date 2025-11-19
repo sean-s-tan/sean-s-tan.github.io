@@ -1,174 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sean Tan - Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sean Tan | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <style>
-    :root {
-      --bg: #0f0f0f;
-      --card: #1a1a1a;
-      --text: #f0f0f0;
-      --accent: #4f7cff;
-    }
+<style>
+:root {
+  --bg: #0d0d0d;
+  --text: #e5e5e5;
+  --card: #151515;
+  --accent: #4f7cff;
+  --accent2: #7f5cff;
+}
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      display: flex;
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: "Inter", sans-serif; }
+body { background: var(--bg); color: var(--text); display: flex; height: 100vh; overflow: hidden; }
 
-    /* SIDEBAR */
-    .sidebar {
-      width: 260px;
-      height: 100vh;
-      background: #111;
-      padding: 30px 20px;
-      position: fixed;
-      overflow-y: auto;
-      border-right: 1px solid #333;
-    }
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background: linear-gradient(180deg, #111 0%, #1a1a1a 100%);
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-right: 1px solid #222;
+  position: fixed;
+  height: 100%;
+  overflow-y: auto;
+}
 
-    .sidebar h2 {
-      margin-top: 0;
-      font-size: 26px;
-      text-align: center;
-    }
+.sidebar nav a {
+  display: block;
+  margin: 12px 0;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 18px;
+  transition: 0.25s;
+}
 
-    .sidebar a {
-      display: block;
-      margin: 14px 0;
-      color: var(--text);
-      text-decoration: none;
-      font-size: 18px;
-    }
+.sidebar nav a:hover {
+  color: var(--accent);
+  transform: translateX(6px);
+  text-shadow: 0 0 8px var(--accent);
+}
 
-    /* MAIN CONTENT */
-    .content {
-      margin-left: 260px;
-      padding: 40px;
-      width: calc(100% - 260px);
-    }
+.sidebar .resume-btn {
+  margin-top: 20px;
+  padding: 10px 16px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  text-align: center;
+  transition: 0.3s;
+}
+.sidebar .resume-btn:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 18px var(--accent2);
+}
 
-    h1, h2 {
-      color: white;
-      font-weight: 600;
-    }
+/* Content */
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 50px;
+  padding-left: 320px;
+  scroll-behavior: smooth;
+}
 
-    section {
-      margin-bottom: 60px;
-      max-width: 900px;
-    }
+section {
+  margin-bottom: 100px;
+}
 
-    p {
-      line-height: 1.6;
-      font-size: 17px;
-    }
+.job-card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 12px;
+  margin: 15px 0;
+  border: 1px solid #222;
+  max-width: 750px;
+}
 
-    /* JOB CARDS (optional cleanup) */
-    .job-card {
-      background: var(--card);
-      padding: 20px;
-      border-radius: 12px;
-      border: 1px solid #333;
-      margin-top: 20px;
-      max-width: 750px;
-    }
-
-    /* PROFILE PHOTO */
-    .profile-pic {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--accent);
-      margin-right: 20px;
-    }
-
-    /* HERO LAYOUT */
-    #hero {
-      display: flex;
-      align-items: center;
-      gap: 25px;
-      margin-bottom: 50px;
-    }
-
-  </style>
+/* Certification icon styling */
+.cert-icon {
+  color: var(--accent);
+  margin-right: 10px;
+  font-size: 20px;
+}
+</style>
 </head>
-
 <body>
 
-  <!-- SIDEBAR -->
-  <div class="sidebar">
-    <h2>Sean Tan</h2>
-    <a href="#hero">About</a>
-    <a href="#experience">Work Experience</a>
+<!-- Sidebar -->
+<div class="sidebar">
+  <nav>
+    <a href="#hero">Home</a>
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
     <a href="#projects">Projects</a>
-    <a href="#certs">Certifications</a>
+    <a href="#education">Education</a>
+    <a href="#certifications">Certifications</a>
     <a href="#contact">Contact</a>
+  </nav>
+  <a class="resume-btn" href="https://drive.google.com/file/d/1aOA_ybkdGNjQ6aEqpNvFY6koMiox4PzK/view?usp=sharing" target="_blank">Resume</a>
+</div>
+
+<!-- Main Content -->
+<div class="content">
+
+<!-- HERO -->
+<section id="hero" style="display:flex; align-items:center; gap:25px;">
+  <img src="headshot.png" 
+       alt="Sean Tan"
+       style="width:150px; height:150px; border-radius:50%; object-fit:cover; border:3px solid var(--accent);">
+
+  <div>
+    <h1>Hi, I'm Sean Tan</h1>
+    <p>IT Specialist with 3 years of experience supporting systems, networks, Microsoft 365, and security across Bay Area companies.</p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <h1>About Me</h1>
+  <p>I provide IT solutions for businesses and clients, specializing in system administration, troubleshooting, deployments, and security best practices.</p>
+</section>
+
+<!-- WORK EXPERIENCE -->
+<section id="work">
+  <h1>Work Experience</h1>
+
+  <div class="job-card">
+    <h3>IT Field Technician — UCSF</h3>
+    <p>Sep 2025 – Nov 2025 • 3 months</p>
+    <p>Supported 1,000+ staff. Managed EPIC, AD, Intune, printers, phones, Duo, ServiceNow.</p>
   </div>
 
-  <!-- MAIN CONTENT -->
-  <div class="content">
-
-    <!-- HERO SECTION -->
-    <section id="hero">
-      <img src="headshot.png" alt="Sean Tan" class="profile-pic">
-
-      <div>
-        <h1>Hi, I'm Sean Tan</h1>
-        <p>
-          IT Specialist with 3 years of experience supporting systems, networks, and end-users across multiple companies.
-          Skilled in troubleshooting, device deployment, security, and systems administration.
-        </p>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience">
-      <h2>Work Experience</h2>
-
-      <div class="job-card">
-        <h3>IT Specialist (Contract)</h3>
-        <p><strong>Multiple Companies – 2023–Present</strong></p>
-        <ul>
-          <li>Provided helpdesk support for Windows, macOS, and network troubleshooting.</li>
-          <li>Performed system updates, device imaging, and MDM deployments.</li>
-          <li>Configured security settings, MFA, and Microsoft 365 access.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects">
-      <h2>Projects</h2>
-      <p>More projects coming soon...</p>
-    </section>
-
-    <!-- CERTIFICATIONS -->
-    <section id="certs">
-      <h2>Certifications</h2>
-
-      <ul>
-        <li><a href="https://www.coursera.org/account/accomplishments/verify/7QS927F86ZD8" target="_blank">Google IT Support</a></li>
-        <li><a href="https://www.coursera.org/account/accomplishments/verify/JNJUEOQ4OU4C" target="_blank">Technical Support Fundamentals</a></li>
-        <li><a href="https://www.coursera.org/account/accomplishments/verify/SUPDWJ4IM3P3" target="_blank">System Administration</a></li>
-        <li><a href="https://www.coursera.org/account/accomplishments/specialization/1VDWPD84NXVX" target="_blank">Google Tech Support Specialization</a></li>
-        <li><a href="https://www.coursera.org/account/accomplishments/professional-cert/certificate/0FC6N6GPS2C8" target="_blank">Professional Certificate</a></li>
-      </ul>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Email: <strong>tansean415@gmail.com</strong></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/sean-s-tan/" target="_blank">linkedin.com/in/sean-s-tan</a></p>
-    </section>
-
+  <div class="job-card">
+    <h3>EPIC TDR Analyst — UCSF</h3>
+    <p>Aug 2025 – Sep 2025 • 2 months</p>
+    <p>Performed hospital readiness testing, validated workflows, printing, EPIC devices, kiosks.</p>
   </div>
+
+  <div class="job-card">
+    <h3>Desktop Deployment Tech — UCSF Benioff</h3>
+    <p>May 2025 – Aug 2025 • 4 months</p>
+    <p>Imaged & deployed 500+ clinical workstations. Configured AD, printers, EPIC, Imprivata.</p>
+  </div>
+
+  <div class="job-card">
+    <h3>IT Technician — Freelance</h3>
+    <p>Jun 2022 – May 2025 • 3 years</p>
+    <p>Provided networking, server setup, troubleshooting, system optimization, client support.</p>
+  </div>
+
+  <div class="job-card">
+    <h3>IT Support Specialist — SFSU</h3>
+    <p>Feb 2022 – May 2025 • 3 years 4 months</p>
+    <p>Supported Windows/macOS, classroom tech, onboarding, AD accounts, software installs.</p>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <h1>Projects</h1>
+  <div class="job-card">
+    <h3>Dignity Health → UCSF Go-Live</h3>
+    <p>Oct 2025</p>
+    <p>Supported major hospital migration. Validated workflows, access, printing, and security tools.</p>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <h1>Education</h1>
+  <div class="job-card">
+    <h3>San Francisco State University</h3>
+    <p>B.S. Information Systems • 2021–2025</p>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <h1>Certifications</h1>
+
+  <div class="job-card">
+    <h3><i class="fa-solid fa-shield-halved cert-icon"></i>
+    <a href="https://www.coursera.org/account/accomplishments/verify/7QS927F86ZD8" target="_blank">Google IT Support Professional Certificate</a></h3>
+    <p>Coursera · Completed</p>
+  </div>
+
+  <div class="job-card">
+    <h3><i class="fa-solid fa-desktop cert-icon"></i>
+    <a href="https://www.coursera.org/account/accomplishments/verify/JNJUEOQ4OU4C" target="_blank">Technical Support Fundamentals</a></h3>
+    <p>Coursera · Completed</p>
+  </div>
+
+  <div class="job-card">
+    <h3><i class="fa-solid fa-network-wired cert-icon"></i>
+    <a href="https://www.coursera.org/account/accomplishments/verify/SUPDWJ4IM3P3" target="_blank">The Bits and Bytes of Computer Networking</a></h3>
+    <p>Coursera · Completed</p>
+  </div>
+
+  <div class="job-card">
+    <h3><i class="fa-solid fa-book-open cert-icon"></i>
+    <a href="https://www.coursera.org/account/accomplishments/specialization/1VDWPD84NXVX" target="_blank">Google IT Support Specialization</a></h3>
+    <p>Coursera · Completed</p>
+  </div>
+
+  <div class="job-card">
+    <h3><i class="fa-solid fa-lock cert-icon"></i>
+    <a href="https://www.coursera.org/account/accomplishments/professional-cert/certificate/0FC6N6GPS2C8" target="_blank">Google Cybersecurity Professional Certificate</a></h3>
+    <p>Coursera · Completed</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h1>Contact</h1>
+  <p>Email: <a href="mailto:tansean415@gmail.com">tansean415@gmail.com</a></p>
+  <p>Phone: <a href="tel:4156098862">415-609-8862</a></p>
+  <p>LinkedIn: <a href="https://www.linkedin.com/in/sean-s-tan/" target="_blank">/in/sean-s-tan</a></p>
+</section>
+
+</div>
 </body>
-
 </html>
