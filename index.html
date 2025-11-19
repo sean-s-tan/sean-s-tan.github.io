@@ -4,32 +4,185 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sean Tan | IT Portfolio</title>
-<link rel="stylesheet" href="style.css">
+<style>
+/* --- Reset & Base --- */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f9f9f9;
+    color: #222;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+/* --- Header & Navigation --- */
+header {
+    padding: 30px;
+    text-align: center;
+    background: #ffffff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    animation: fadeInDown 1s ease;
+}
+.logo {
+    font-size: 48px;
+    font-weight: bold;
+    letter-spacing: 10px;
+}
+nav a {
+    color: #444;
+    margin: 0 16px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+nav a:hover { color: #4a9cff; }
+
+/* --- Sections --- */
+section {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 20px;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeInUp 1s forwards;
+}
+section:nth-of-type(1){ animation-delay: 0.3s; }
+section:nth-of-type(2){ animation-delay: 0.6s; }
+section:nth-of-type(3){ animation-delay: 0.9s; }
+section:nth-of-type(4){ animation-delay: 1.2s; }
+
+/* --- Headings & Cards --- */
+h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    border-left: 6px solid #4a9cff;
+    padding-left: 12px;
+}
+.card {
+    background: #ffffff;
+    padding: 25px;
+    margin: 25px 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+}
+.card:hover { transform: translateY(-5px); }
+
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    margin-top: 12px;
+    margin-right: 8px;
+    padding: 12px 22px;
+    background: #4a9cff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.3s;
+}
+.btn:hover { background: #1f7adf; transform: translateY(-2px); }
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 25px;
+    font-size: 14px;
+    color: #777;
+    border-top: 1px solid #ddd;
+}
+
+/* --- Animations --- */
+@keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Responsive --- */
+@media(max-width:600px){
+    .logo { font-size: 36px; }
+    nav a { margin: 0 10px; font-size: 16px; }
+    h2 { font-size: 28px; }
+}
+</style>
 </head>
 <body>
 
 <header>
-  <div class="logo">S   T</div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="projects.html">Projects</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+    <div class="logo">S   T</div>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
 </header>
 
-<section>
-  <h2>Welcome</h2>
-  <div class="card">
-    <p>Hello! I’m <strong>Sean Tan</strong>, an IT Specialist with 3+ years of experience in healthcare and enterprise IT. My expertise spans endpoint management, Intune/MDM, EPIC Hyperspace, Imprivata, Active Directory, and IT security solutions.</p>
-    <p>I deliver secure, efficient IT solutions while supporting end-users, configuring systems, and managing accounts in enterprise environments. Explore my projects, skills, and professional journey below.</p>
-    <a class="btn" href="https://www.linkedin.com/in/sean-s-tan/" target="_blank">LinkedIn</a>
-    <a class="btn" href="YOUR-RESUME-LINK.pdf" target="_blank">Resume</a>
-  </div>
+<!-- Home Section -->
+<section id="home">
+    <h2>Welcome</h2>
+    <div class="card">
+        <p>Hello! I’m <strong>Sean Tan</strong>, an IT Specialist with 3+ years supporting healthcare and enterprise IT. I specialize in endpoint management, Intune/MDM, EPIC Hyperspace, Imprivata, Active Directory, and IT security solutions.</p>
+        <p>I deliver secure, efficient IT solutions while supporting end-users, configuring systems, and managing accounts in enterprise environments.</p>
+        <a class="btn" href="https://www.linkedin.com/in/sean-s-tan/" target="_blank">LinkedIn</a>
+        <a class="btn" href="YOUR-RESUME-LINK.pdf" target="_blank">Resume</a>
+        <a class="btn" href="https://github.com/sean-s-tan" target="_blank">GitHub</a>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about">
+    <h2>About Me</h2>
+    <div class="card">
+        <p>Hands-on IT Specialist with experience in healthcare and enterprise IT. Core skills include:</p>
+        <ul>
+            <li>Endpoint Management & Intune/MDM</li>
+            <li>EPIC Hyperspace & Imprivata Configuration</li>
+            <li>Active Directory, Duo Admin, ServiceNow, LAPS</li>
+            <li>Hardware/Software Deployment & End-User Training</li>
+            <li>IT Security & System Administration</li>
+        </ul>
+        <p>Passionate about implementing reliable, secure IT solutions and continuously improving system efficiency.</p>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects">
+    <h2>Projects</h2>
+    <div class="card">
+        <h3>Dignity Health to UCSF Go-Live</h3>
+        <p>Supported migration of Dignity Health systems to UCSF, configuring EPIC Hyperspace, Imprivata, and Active Directory for a smooth go-live. Assisted with training, troubleshooting, and security checks.</p>
+        <p><strong>Skills:</strong> EPIC Hyperspace, Imprivata, Active Directory, Duo Admin, IT Support</p>
+    </div>
+    <div class="card">
+        <h3>Security Infrastructure Design</h3>
+        <p>Designed secure environments including firewall rules, VPN, wireless coverage, and secure laptops.</p>
+        <p><strong>Skills:</strong> Endpoint Management, Network Security, VPN, Firewalls</p>
+    </div>
+    <div class="card">
+        <h3>User & Systems Administration</h3>
+        <p>Managed user accounts, groups, updates, and security policies across Windows and Linux systems while supporting multiple sites.</p>
+        <p><strong>Skills:</strong> Active Directory, ServiceNow, LAPS, System Administration, Troubleshooting</p>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+    <h2>Contact</h2>
+    <div class="card">
+        <p>Email: YOUR-EMAIL@HERE.COM</p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/sean-s-tan/" target="_blank">linkedin.com/in/sean-s-tan</a></p>
+        <p>GitHub: <a href="https://github.com/sean-s-tan" target="_blank">github.com/sean-s-tan</a></p>
+    </div>
 </section>
 
 <footer>
-  © 2025 Sean Tan
+    © 2025 Sean Tan
 </footer>
 
 </body>
