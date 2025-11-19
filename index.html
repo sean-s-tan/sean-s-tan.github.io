@@ -1,177 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sean Tan | Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-<style>
-:root {
-  --bg: #0d0d0d;
-  --text: #e5e5e5;
-  --card: #151515;
-  --accent: #4f7cff;
-  --accent2: #7f5cff;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sean Tan | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --text: #e5e5e5;
+      --card: #151515;
+      --accent: #4f7cff;
+      --accent2: #7f5cff;
+    }
 
-* { margin:0; padding:0; box-sizing:border-box; font-family:"Inter", sans-serif; }
-body { background:var(--bg); color:var(--text); display:flex; min-height:100vh; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Inter", sans-serif; }
 
-.sidebar {
-  width:260px;
-  background: linear-gradient(180deg,#111 0%,#1a1a1a 100%);
-  padding:40px 30px;
-  display:flex;
-  flex-direction:column;
-  gap:40px;
-  border-right:1px solid #222;
-  position:fixed;
-  height:100%;
-  left:0; top:0;
-  overflow-y:hidden;
-}
-.name { font-size:34px; font-weight:800; line-height:1.2; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      scroll-behavior: smooth;
+    }
 
-nav { position:relative; }
-nav a { display:block; margin:15px 0; text-decoration:none; color:var(--text); font-size:18px; transition:0.25s; }
-nav a:hover { color:var(--accent); transform:translateX(6px); }
-.active-indicator {
-  position:absolute; left:-12px; width:4px; background:var(--accent); border-radius:4px; transition:transform 0.3s, height 0.3s;
-}
+    /* Hero */
+    .parallax-hero {
+      background-image: url('https://images.unsplash.com/photo-1527443224154-d54f4f0e7f32');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3rem;
+      font-weight: 700;
+      text-align: center;
+      position: relative;
+    }
 
-.resume-btn { margin-top:30px; padding:12px 18px; background:linear-gradient(90deg,var(--accent),var(--accent2)); color:white; border-radius:10px; text-align:center; text-decoration:none; font-weight:600; transition:0.3s; }
-.resume-btn:hover { transform:scale(1.06); }
+    /* Resume Button */
+    .resume-btn {
+      display: inline-block;
+      margin: 20px auto;
+      padding: 12px 24px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      color: white;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .resume-btn:hover { transform: scale(1.05); }
 
-.content { flex:1; padding:50px; padding-left:320px; overflow-y:auto; scroll-behavior:smooth; }
-section { margin-bottom:120px; opacity:0; transform:translateY(20px); transition:opacity 0.8s, transform 0.8s; }
-section.visible { opacity:1; transform:translateY(0); }
+    /* Content */
+    .content { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
 
-h1 { font-size:42px; margin-bottom:15px; }
-h2 { font-size:24px; margin-bottom:10px; color:var(--accent); }
-p { font-size:18px; line-height:1.6; max-width:800px; opacity:0.9; }
-a.link { color:var(--accent); text-decoration:underline; }
+    section { margin-bottom: 100px; opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
+    section.visible { opacity: 1; transform: translateY(0); }
 
-.job-card { background:var(--card); padding:22px; border-radius:14px; margin:20px 0; border:1px solid #222; transition:0.35s; }
-.job-card:hover { transform:translateY(-8px) scale(1.02); box-shadow:0 12px 28px rgba(0,0,0,0.5); border-color:var(--accent); }
+    h1 { font-size: 42px; margin-bottom: 15px; }
+    h2 { font-size: 28px; margin-bottom: 10px; color: var(--accent); }
+    h3 { font-size: 20px; margin-bottom: 6px; }
+    p  { font-size: 18px; line-height: 1.6; max-width: 800px; margin-bottom: 12px; }
 
-.parallax-hero {
-  background-image: url('https://images.unsplash.com/photo-1527443224154-d54f4f0e7f32');
-  background-attachment: fixed; background-size:cover; background-position:center;
-  height:60vh; display:flex; align-items:center; justify-content:center; font-size:3rem; font-weight:700; color:white;
-  text-shadow:0 4px 10px rgba(0,0,0,0.6);
-}
+    .job-card {
+      background: var(--card);
+      padding: 22px;
+      border-radius: 14px;
+      margin: 20px 0;
+      border: 1px solid #222;
+      transition: 0.35s ease;
+    }
+    .job-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.5);
+      border-color: var(--accent);
+    }
 
-#backToTop {
-  position:fixed; bottom:30px; right:30px; padding:14px 18px; font-size:16px; border:none; border-radius:50px; cursor:pointer; background:var(--accent); color:white; display:none; transition:0.3s;
-}
-#backToTop:hover { transform:scale(1.1); }
+    .job-title { font-weight: 700; }
+    .company   { font-size: 15px; opacity: 0.7; margin-bottom: 8px; }
 
-#scroll-progress { position:fixed; top:0; left:0; height:4px; background:linear-gradient(to right,#4f46e5,#9333ea); width:0%; z-index:9999; }
-</style>
+    a.link { color: var(--accent); text-decoration: underline; }
+
+    /* Back to Top */
+    #backToTop {
+      position: fixed; bottom: 30px; right: 30px;
+      padding: 14px 18px;
+      font-size: 16px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      background: var(--accent);
+      color: white;
+      display: none;
+      transition: 0.3s;
+    }
+    #backToTop:hover { transform: scale(1.1); }
+
+    /* Scroll Progress Bar */
+    #scroll-progress {
+      position: fixed; top: 0; left: 0; height: 4px;
+      background: linear-gradient(to right, var(--accent), var(--accent2));
+      width: 0%; z-index: 9999;
+    }
+
+    /* Projects */
+    .project-card { background: var(--card); padding: 20px; border-radius: 12px; margin: 20px 0; }
+  </style>
 </head>
 <body>
+  <div id="scroll-progress"></div>
 
-<div id="scroll-progress"></div>
+  <div class="parallax-hero" id="hero">Sean Tan</div>
+  <div style="text-align:center;">
+    <a class="resume-btn" href="https://drive.google.com/file/d/1aOA_ybkdGNjQ6aEqpNvFY6koMiox4PzK/view?usp=sharing" target="_blank">View Resume</a>
+  </div>
 
-<div class="sidebar">
-  <div class="name">Sean<br>Tan</div>
-  <nav>
-    <div class="active-indicator"></div>
-    <a href="#hero">Home</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a class="link" href="mailto:tansean415@gmail.com">Email</a>
-    <a class="link" href="https://www.linkedin.com/in/sean-s-tan/" target="_blank">LinkedIn</a>
-  </nav>
-  <a class="resume-btn" href="https://drive.google.com/file/d/1aOA_ybkdGNjQ6aEqpNvFY6koMiox4PzK/view?usp=sharing" target="_blank">View Resume</a>
-</div>
+  <div class="content">
+    <section id="home">
+      <h1>Hi, I'm Sean</h1>
+      <p>IT Specialist with 3 years of experience across multiple Bay Area companies. Skilled in systems administration, helpdesk, networking, device deployment, Microsoft 365, and security best practices.</p>
+    </section>
 
-<div class="content">
-  <section id="hero">
-    <div class="parallax-hero">Sean Tan</div>
-    <h1>Hi, I'm Sean 👋</h1>
-    <p>IT Specialist with 3 years of experience across multiple Bay Area companies. Skilled in systems administration, helpdesk, networking, device deployment, Microsoft 365, and security best practices.</p>
-  </section>
+    <section id="experience">
+      <h1>Experience</h1>
 
-  <section id="experience">
-    <h1>Experience</h1>
-    <div class="job-card">
-      <div class="job-title">Information Technology Field Technician</div>
-      <div class="company">University of California, San Francisco — Sep 2025 to Nov 2025 · 3 mos</div>
-      <p>Delivered on-site IT support for 1,000+ staff. Installed EPIC Hyperspace & secure tools. Managed Duo Admin, AD, LAPS UI, ServiceNow, System Pulse. Supported Microsoft Intune. Maintained workstations, printers, and phones.</p>
-    </div>
-    <div class="job-card">
-      <div class="job-title">EPIC TDR Analyst</div>
-      <div class="company">University of California, San Francisco — Aug 2025 to Sep 2025 · 2 mos</div>
-      <p>Performed EPIC TDR readiness testing. Validated printers, barcode scanners, kiosks. Configured VPSX printing. Collaborated with IT/clinical teams to ensure smooth go-live.</p>
-    </div>
-    <div class="job-card">
-      <div class="job-title">Desktop Deployment Tech</div>
-      <div class="company">UCSF Benioff Children's Hospitals — May 2025 to Aug 2025 · 4 mos</div>
-      <p>Deployed & imaged 500+ medical PCs. Configured AD, printers, EPIC, Imprivata. Maintained inventory & asset tracking. Scheduled deployments with minimal disruption.</p>
-    </div>
-  </section>
+      <div class="job-card">
+        <div class="job-title">Information Technology Field Technician</div>
+        <div class="company">University of California, San Francisco — Sep 2025 to Nov 2025 · 3 mos</div>
+        <p>Delivered on-site IT support for 1,000+ staff. Installed EPIC Hyperspace & secure access tools. Managed Duo Admin, AD, LAPS UI, ServiceNow, and Microsoft Intune.</p>
+      </div>
 
-  <section id="projects">
-    <h2>Project Experience</h2>
-    <div class="job-card stagger">
-      <h3>Dignity Health To UCSF Go-Live</h3>
-      <p>Supported migration of Dignity Health systems to UCSF. Configured user access, validated workflows, troubleshot EPIC & Imprivata, assisted with training and security compliance.</p>
-    </div>
-  </section>
+      <div class="job-card">
+        <div class="job-title">EPIC TDR Analyst</div>
+        <div class="company">University of California, San Francisco — Aug 2025 to Sep 2025 · 2 mos</div>
+        <p>Performed EPIC Technical Dress Rehearsal readiness testing. Validated printers, barcode scanners, kiosks, WOWs. Configured VPSX printing. Collaborated with IT/clinical teams.</p>
+      </div>
 
-  <section id="contact">
-    <h1>Contact</h1>
-    <p>Email: <a class="link" href="mailto:tansean415@gmail.com">tansean415@gmail.com</a></p>
-    <p>LinkedIn: <a class="link" href="https://www.linkedin.com/in/sean-s-tan/" target="_blank">/in/sean-s-tan</a></p>
-    <p>Phone: <b>(415) 377-4965</b></p>
-  </section>
-</div>
+      <div class="job-card">
+        <div class="job-title">Desktop Deployment Tech</div>
+        <div class="company">UCSF Benioff Children's Hospitals — May 2025 to Aug 2025 · 4 mos</div>
+        <p>Deployed & imaged 500+ medical PCs. Configured AD, printers, EPIC Hyperspace, Imprivata. Maintained inventory & asset tracking. Scheduled deployments with minimal disruption.</p>
+      </div>
 
-<button id="backToTop">▲ Top</button>
+      <div class="job-card">
+        <div class="job-title">IT Technician (Freelance)</div>
+        <div class="company">Self-Employed — Jun 2022 to May 2025 · 3 yrs</div>
+        <p>Provided IT consulting, server setup, data recovery, and networking. Configured Windows/macOS systems & optimized performance. Communicated solutions clearly to clients.</p>
+      </div>
 
-<script>
-// Back to top
-const topBtn = document.getElementById('backToTop');
-window.addEventListener('scroll', () => topBtn.style.display = window.scrollY>300?'block':'none');
-topBtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+      <div class="job-card">
+        <div class="job-title">Information Technology Support Specialist</div>
+        <div class="company">San Francisco State University — Feb 2022 to May 2025 · 3 yrs 4 mos</div>
+        <p>Supported faculty, staff, students on Windows/macOS. Installed software & VPNs. Managed AD onboarding/offboarding. Troubleshot hardware, networking, and classroom tech.</p>
+      </div>
+    </section>
 
-// Fade-in sections
-const sections = document.querySelectorAll('section');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
-}, {threshold:0.2});
-sections.forEach(sec => observer.observe(sec));
+    <section id="projects">
+      <h2>Project Experience</h2>
+      <div class="project-card">
+        <h3>Dignity Health To UCSF Go-Live</h3>
+        <p><strong>Oct 2025 – Oct 2025</strong></p>
+        <p><em>Associated with University of California, San Francisco</em></p>
+        <p>Supported migration of Dignity Health systems to UCSF. Configured user access, validated workflows, troubleshot EPIC & Imprivata, assisted with training and security compliance.</p>
+      </div>
+    </section>
 
-// Sidebar indicator
-const links = document.querySelectorAll('.sidebar nav a');
-const indicator = document.querySelector('.active-indicator');
-function updateIndicator() {
-  const active = document.querySelector('.sidebar nav a.active-link');
-  if(active) { 
-    const rect = active.getBoundingClientRect();
-    const sidebarRect = document.querySelector('.sidebar').getBoundingClientRect();
-    indicator.style.height = rect.height + 'px';
-    indicator.style.transform = `translateY(${rect.top - sidebarRect.top}px)`;
-  }
-}
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(sec => { if(window.pageYOffset >= sec.offsetTop-120 && window.pageYOffset < sec.offsetTop+sec.clientHeight-120) current = sec.id; });
-  links.forEach(l => l.classList.remove('active-link'));
-  links.forEach(l => { if(l.getAttribute('href')===`#${current}`) l.classList.add('active-link'); });
-  updateIndicator();
-});
-window.addEventListener('resize', updateIndicator);
-setTimeout(updateIndicator,400);
+    <section id="contact">
+      <h1>Contact</h1>
+      <p>Email: <a class="link" href="mailto:tansean415@gmail.com">tansean415@gmail.com</a></p>
+      <p>LinkedIn: <a class="link" href="https://www.linkedin.com/in/sean-s-tan/" target="_blank">/in/sean-s-tan</a></p>
+      <p>Phone: <b>415-609-8862</b></p>
+    </section>
+  </div>
 
-// Scroll progress
-window.addEventListener('scroll',()=>{
-  const scrollTop=window.scrollY;
-  const docHeight=document.body.scrollHeight-window.innerHeight;
-  document.getElementById('scroll-progress').style.width=(scrollTop/docHeight)*100+'%';
-});
-</script>
+  <button id="backToTop">▲ Top</button>
 
+  <script>
+    // Back to Top button
+    const topBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => topBtn.style.display = window.scrollY > 300 ? 'block' : 'none');
+    topBtn.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+
+    // Fade-in sections
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, {threshold:0.2});
+    sections.forEach(section => observer.observe(section));
+
+    // Scroll progress bar
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.body.scrollHeight - window.innerHeight;
+      const progress = (scrollTop / docHeight) * 100;
+      document.getElementById('scroll-progress').style.width = progress + '%';
+    });
+  </script>
 </body>
 </html>
