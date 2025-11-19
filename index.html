@@ -1,236 +1,351 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sean Tan | Portfolio</title>
-<style>
-/* --- Reset & Base --- */
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f9f9f9;
-    color: #222;
-    line-height: 1.6;
-    scroll-behavior: smooth;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sean Tan | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-/* --- Header & Navigation --- */
-header {
-    padding: 30px;
-    text-align: center;
-    background: #ffffff;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    animation: fadeInDown 1s ease;
-}
-.logo {
-    font-size: 48px;
-    font-weight: bold;
-    letter-spacing: 10px;
-}
-nav a {
-    color: #444;
-    margin: 0 16px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 18px;
-}
-nav a.active {
-    color: #4a9cff;
-}
-nav a:hover { color: #4a9cff; }
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --text: #e5e5e5;
+      --card: #151515;
+      --accent: #4f7cff;
+      --accent2: #7f5cff;
+    }
 
-/* --- Sections --- */
-section {
-    max-width: 900px;
-    margin: 60px auto;
-    padding: 0 20px;
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Inter", sans-serif; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 260px;
+      background: linear-gradient(180deg, #111 0%, #1a1a1a 100%);
+      padding: 40px 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      border-right: 1px solid #222;
+      animation: slideIn 0.7s ease;
+      position: fixed;
+      height: 100%;
+      left: 0; top: 0;
+      overflow-y: auto;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(-60px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    .name { font-size: 34px; font-weight: 800; line-height: 1.2; }
+
+    nav a {
+      display: block; margin: 15px 0;
+      text-decoration: none; color: var(--text);
+      font-size: 18px; transition: 0.25s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+      transform: translateX(6px);
+      text-shadow: 0 0 8px var(--accent);
+    }
+
+    .resume-btn {
+      margin-top: 30px;
+      padding: 12px 18px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      color: white; border-radius: 10px;
+      text-decoration: none; font-weight: 600;
+      text-align: center; transition: 0.3s;
+    }
+
+    .resume-btn:hover { transform: scale(1.06); box-shadow: 0 0 18px var(--accent2); }
+
+    /* Main content */
+    .content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 50px;
+      padding-left: 320px;
+      scroll-behavior: smooth;
+    }
+
+    section {
+      margin-bottom: 120px;
+      animation: fadeIn 1.1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 { font-size: 42px; margin-bottom: 15px; }
+    h2 { font-size: 24px; margin-bottom: 10px; color: var(--accent); }
+    p  { font-size: 18px; line-height: 1.6; max-width: 800px; opacity: 0.9; }
+
+    /* Job Cards */
+    .job-card {
+      background: var(--card);
+      padding: 22px;
+      border-radius: 14px;
+      margin: 20px 0;
+      transition: 0.35s ease;
+      border: 1px solid #222;
+      transform: translateY(0);
+    }
+
+    .job-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.5);
+      border-color: var(--accent);
+    }
+
+    .job-title { font-size: 20px; font-weight: 700; }
+    .company   { font-size: 15px; opacity: 0.7; margin-bottom: 6px; }
+
+    /* Back to Top */
+    #backToTop {
+      position: fixed;
+      bottom: 30px; right: 30px;
+      padding: 14px 18px;
+      font-size: 16px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 0 12px var(--accent);
+      transition: 0.3s;
+      display: none;
+    }
+
+    #backToTop:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 18px var(--accent2);
+    }
+    /* Hover animation for timeline dots */
+  .timeline-dot:hover {
+    transform: scale(1.4);
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+  }
+
+  /* Fade-in animation */
+  .fade-section {
     opacity: 0;
-    transform: translateY(40px);
-    animation: fadeInUp 1s forwards;
-}
-section:nth-of-type(1){ animation-delay: 0.3s; }
-section:nth-of-type(2){ animation-delay: 0.6s; }
-section:nth-of-type(3){ animation-delay: 0.9s; }
-section:nth-of-type(4){ animation-delay: 1.2s; }
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .fade-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-/* --- Headings & Cards --- */
-h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
-    border-left: 6px solid #4a9cff;
-    padding-left: 12px;
-}
-.card {
-    background: #ffffff;
-    padding: 25px;
-    margin: 25px 0;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    transition: transform 0.3s;
-}
-.card:hover { transform: translateY(-5px); }
+  /* Left moving indicator */
+  .sidebar nav {
+    position: relative;
+  }
 
-/* --- Buttons --- */
-.btn {
-    display: inline-block;
-    margin-top: 12px;
-    margin-right: 8px;
-    padding: 12px 22px;
-    background: #4a9cff;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-    transition: background 0.3s, transform 0.3s;
-}
-.btn:hover { background: #1f7adf; transform: translateY(-2px); }
-
-/* --- Project Gallery --- */
-.project-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-.project-card {
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    padding: 20px;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-}
-
-/* --- Footer --- */
-footer {
-    text-align: center;
-    padding: 25px;
-    font-size: 14px;
-    color: #777;
-    border-top: 1px solid #ddd;
-}
-
-/* --- Animations --- */
-@keyframes fadeInUp {
-    to { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* --- Responsive --- */
-@media(max-width:600px){
-    .logo { font-size: 36px; }
-    nav a { margin: 0 10px; font-size: 16px; }
-    h2 { font-size: 28px; }
-}
+  .active-indicator {
+    position: absolute;
+    left: -12px;
+    width: 4px;
+    height: 20px;
+    background: var(--accent);
+    border-radius: 4px;
+    transition: top 0.3s ease;
+  }
 </style>
 </head>
+
 <body>
+  <div class="sidebar">
+    <div class="name">Sean<br>Tan</div>
 
-<header>
-    <div class="logo">S   T</div>
     <nav>
-        <a href="#about" class="active">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+      <div class="active-indicator"></div>
+      <a href="#home">Home</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
     </nav>
-</header>
 
-<!-- Home Section -->
-<section id="home">
-    <h2>Welcome</h2>
-    <div class="card">
-        <p>Hello! I’m <strong>Sean Tan</strong>, an IT Specialist with 3+ years supporting healthcare and enterprise IT. I specialize in endpoint management, Intune/MDM, EPIC Hyperspace, Imprivata, Active Directory, and IT security solutions.</p>
-        <p>I deliver secure, efficient IT solutions while supporting end-users, configuring systems, and managing accounts in enterprise environments.</p>
-        <a class="btn" href="https://www.linkedin.com/in/sean-s-tan/" target="_blank">LinkedIn</a>
-        <a class="btn" href="https://drive.google.com/file/d/1aOA_ybkdGNjQ6aEqpNvFY6koMiox4PzK/view?usp=sharing" target="_blank">Resume</a>
-        <a class="btn" href="https://github.com/sean-s-tan" target="_blank">GitHub</a>
-    </div>
-</section>
+    <a class="resume-btn" href="https://drive.google.com/file/d/1aOA_ybkdGNjQ6aEqpNvFY6koMiox4PzK/view?usp=sharing" target="_blank">View Resume</a>
+  </div>
 
-<!-- About Section -->
-<section id="about">
-    <h2>About Me</h2>
-    <div class="card">
-        <p>Hands-on IT Specialist with experience in healthcare and enterprise IT. Core skills include:</p>
-        <ul>
-            <li>Endpoint Management & Intune/MDM</li>
-            <li>EPIC Hyperspace & Imprivata Configuration</li>
-            <li>Active Directory, Duo Admin, ServiceNow, LAPS</li>
-            <li>Hardware/Software Deployment & End-User Training</li>
-            <li>IT Security & System Administration</li>
-        </ul>
-        <p>Passionate about implementing reliable, secure IT solutions and continuously improving system efficiency.</p>
-    </div>
-</section>
+  <div class="content">
+    <section id="home">
+      <h1>Hi, I'm Sean 👋</h1>
+      <p>IT Specialist with 3 years of experience across multiple Bay Area companies. Skilled in systems administration, helpdesk, networking, device deployment, Microsoft 365, and security best practices.</p>
+    </section>
 
-<!-- Projects Section -->
-<section id="projects">
-    <h2>Projects</h2>
-    <div class="project-gallery">
+    <section id="experience">
+      <h1>Experience</h1>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content job-card">
+            <div class="job-title">Information Technology Field Technician</div>
+            <div class="company">University of California, San Francisco — Sep 2025 to Nov 2025 · 3 mos</div>
+            <p>• Delivered on-site IT support for 1,000+ staff across hospital departments.<br>
+            • Installed and troubleshot EPIC Hyperspace and secure access tools.<br>
+            • Managed Duo Admin, AD, LAPS UI, ServiceNow, and System Pulse.<br>
+            • Supported mobile device management through Microsoft Intune.<br>
+            • Maintained hospital workstation, Zebra printer, and Cisco phone reliability.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content job-card">
+            <div class="job-title">EPIC TDR Analyst</div>
+            <div class="company">University of California, San Francisco — Aug 2025 to Sep 2025 · 2 mos</div>
+            <p>• Performed EPIC Technical Dress Rehearsal readiness testing.<br>
+            • Validated Zebra printers, barcode scanners, kiosks, and WOWs.<br>
+            • Configured VPSX printing for EPIC workflows.<br>
+            • Collaborated with IT/clinical teams to ensure smooth go‑live.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content job-card">
+            <div class="job-title">Desktop Deployment Tech</div>
+            <div class="company">UCSF Benioff Children's Hospitals — May 2025 to Aug 2025 · 4 mos</div>
+            <p>• Deployed and imaged 500+ Dell AIO & Cybernet medical PCs.<br>
+            • Configured AD accounts, printers, EPIC Hyperspace, Imprivata.<br>
+            • Maintained large‑scale inventory and asset tracking.<br>
+            • Scheduled deployments minimizing workflow disruption.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content job-card">
+            <div class="job-title">IT Technician</div>
+            <div class="company">Self-Employed — Jun 2022 to May 2025 · 3 yrs</div>
+            <p>• Provided IT consulting, server setup, data recovery, networking.<br>
+            • Configured Windows/macOS systems and optimized performance.<br>
+            • Communicated solutions clearly to non‑technical clients.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content job-card">
+            <div class="job-title">Information Technology Support Specialist</div>
+            <div class="company">San Francisco State University — Feb 2022 to May 2025 · 3 yrs 4 mos</div>
+            <p>• Supported faculty, staff, and students across Windows/macOS.<br>
+            • Installed software, VPNs, and performed system optimization.<br>
+            • Onboarded/offboarded users via AD and secure provisioning.<br>
+            • Troubleshot hardware, networking, and classroom tech.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h1>Projects</h1>
+
+      <div class="project-grid">
         <div class="project-card">
-            <h3>Dignity Health to UCSF Go-Live</h3>
-            <p>Supported migration of Dignity Health systems to UCSF, configuring EPIC Hyperspace, Imprivata, and Active Directory for a smooth go-live. Assisted with training, troubleshooting, and security checks.</p>
-            <p><strong>Skills:</strong> EPIC Hyperspace, Imprivata, Active Directory, Duo Admin, IT Support</p>
+          <h2>Security Infrastructure Design</h2>
         </div>
         <div class="project-card">
-            <h3>Security Infrastructure Design</h3>
-            <p>Designed secure environments including firewall rules, VPN, wireless coverage, and secure laptops.</p>
-            <p><strong>Skills:</strong> Endpoint Management, Network Security, VPN, Firewalls</p>
+          <h2>Systems Administration Improvements</h2>
         </div>
         <div class="project-card">
-            <h3>User & Systems Administration</h3>
-            <p>Managed user accounts, groups, updates, and security policies across Windows and Linux systems while supporting multiple sites.</p>
-            <p><strong>Skills:</strong> Active Directory, ServiceNow, LAPS, System Administration, Troubleshooting</p>
+          <h2>Windows & Linux Account Management</h2>
         </div>
-    </div>
-</section>
+        <div class="project-card">
+          <h2>Network Optimization Project</h2>
+        </div>
+      </div>
+    </section>
 
-<!-- Contact Section -->
-<section id="contact">
-    <h2>Contact</h2>
-    <div class="card">
-        <p>Email: <a href="mailto:tansean415@gmail.com">tansean415@gmail.com</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/sean-s-tan/" target="_blank">linkedin.com/in/sean-s-tan</a></p>
-        <p>GitHub: <a href="https://github.com/sean-s-tan" target="_blank">github.com/sean-s-tan</a></p>
-    </div>
-</section>
+    <section id="contact">
+      <h1>Contact</h1>
+      <p>Email: <b>tansean415@gmail.com</b></p>
+      <p>LinkedIn: <b>/in/sean-s-tan</b></p>
+      <p>Phone: <b>(415) 377-4965</b></p>
+    </section>
+  </div>
 
-<footer>
-    © 2025 Sean Tan
-</footer>
+  <button id="backToTop" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">▲ Top</button>
 
-<script>
-// Smooth scroll for nav links
-const navLinks = document.querySelectorAll('nav a');
-const sections = document.querySelectorAll('section');
+  <script>
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      btn.style.display = window.scrollY > 300 ? 'block' : 'none';
+    });
+  </script>
+  <script>
+    // highlight sidebar links on scroll
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.sidebar nav a');
 
-navLinks.forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-  });
-});
+    window.addEventListener('scroll', () => {
+      let current = '';
 
-// Highlight active nav link
-window.addEventListener('scroll', () => {
-  let scrollPos = window.scrollY + 150;
-  sections.forEach(section => {
-    if(scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight){
-      navLinks.forEach(link => link.classList.remove('active'));
-      document.querySelector(`nav a[href="#${section.id}"]`).classList.add('active');
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active-link');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active-link');
+        }
+      });
+    });
+  </script>
+  <script>
+    // Fade-in on scroll
+    const faders = document.querySelectorAll('section');
+    const appearOptions = { threshold: 0.2 };
+    const appearOnScroll = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-visible');
+        }
+      });
+    }, appearOptions);
+
+    faders.forEach(sec => sec.classList.add('fade-section'));
+    faders.forEach(sec => appearOnScroll.observe(sec));
+
+    // Moving left indicator
+    const indicator = document.querySelector('.active-indicator');
+    const navLinks = document.querySelectorAll('.sidebar nav a');
+
+    function updateIndicator() {
+      const active = document.querySelector('.active-link');
+      if (active) {
+        const rect = active.getBoundingClientRect();
+        const sidebarRect = document.querySelector('.sidebar').getBoundingClientRect();
+        indicator.style.top = rect.top - sidebarRect.top + 'px';
+      }
     }
-  });
-});
-</script>
 
+    window.addEventListener('scroll', updateIndicator);
+    window.addEventListener('resize', updateIndicator);
+    setTimeout(updateIndicator, 400);
+  </script>
 </body>
 </html>
