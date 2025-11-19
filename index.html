@@ -38,6 +38,9 @@ nav a {
     font-weight: bold;
     font-size: 18px;
 }
+nav a.active {
+    color: #4a9cff;
+}
 nav a:hover { color: #4a9cff; }
 
 /* --- Sections --- */
@@ -86,6 +89,24 @@ h2 {
 }
 .btn:hover { background: #1f7adf; transform: translateY(-2px); }
 
+/* --- Project Gallery --- */
+.project-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+.project-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
 /* --- Footer --- */
 footer {
     text-align: center;
@@ -117,7 +138,7 @@ footer {
 <header>
     <div class="logo">S   T</div>
     <nav>
-        <a href="#about">About</a>
+        <a href="#about" class="active">About</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
     </nav>
@@ -130,7 +151,7 @@ footer {
         <p>Hello! I’m <strong>Sean Tan</strong>, an IT Specialist with 3+ years supporting healthcare and enterprise IT. I specialize in endpoint management, Intune/MDM, EPIC Hyperspace, Imprivata, Active Directory, and IT security solutions.</p>
         <p>I deliver secure, efficient IT solutions while supporting end-users, configuring systems, and managing accounts in enterprise environments.</p>
         <a class="btn" href="https://www.linkedin.com/in/sean-s-tan/" target="_blank">LinkedIn</a>
-        <a class="btn" href="YOUR-RESUME-LINK.pdf" target="_blank">Resume</a>
+        <a class="btn" href="https://your-link-to-resume.com/SeanTan_Resume.pdf" target="_blank">Resume</a>
         <a class="btn" href="https://github.com/sean-s-tan" target="_blank">GitHub</a>
     </div>
 </section>
@@ -154,20 +175,22 @@ footer {
 <!-- Projects Section -->
 <section id="projects">
     <h2>Projects</h2>
-    <div class="card">
-        <h3>Dignity Health to UCSF Go-Live</h3>
-        <p>Supported migration of Dignity Health systems to UCSF, configuring EPIC Hyperspace, Imprivata, and Active Directory for a smooth go-live. Assisted with training, troubleshooting, and security checks.</p>
-        <p><strong>Skills:</strong> EPIC Hyperspace, Imprivata, Active Directory, Duo Admin, IT Support</p>
-    </div>
-    <div class="card">
-        <h3>Security Infrastructure Design</h3>
-        <p>Designed secure environments including firewall rules, VPN, wireless coverage, and secure laptops.</p>
-        <p><strong>Skills:</strong> Endpoint Management, Network Security, VPN, Firewalls</p>
-    </div>
-    <div class="card">
-        <h3>User & Systems Administration</h3>
-        <p>Managed user accounts, groups, updates, and security policies across Windows and Linux systems while supporting multiple sites.</p>
-        <p><strong>Skills:</strong> Active Directory, ServiceNow, LAPS, System Administration, Troubleshooting</p>
+    <div class="project-gallery">
+        <div class="project-card">
+            <h3>Dignity Health to UCSF Go-Live</h3>
+            <p>Supported migration of Dignity Health systems to UCSF, configuring EPIC Hyperspace, Imprivata, and Active Directory for a smooth go-live. Assisted with training, troubleshooting, and security checks.</p>
+            <p><strong>Skills:</strong> EPIC Hyperspace, Imprivata, Active Directory, Duo Admin, IT Support</p>
+        </div>
+        <div class="project-card">
+            <h3>Security Infrastructure Design</h3>
+            <p>Designed secure environments including firewall rules, VPN, wireless coverage, and secure laptops.</p>
+            <p><strong>Skills:</strong> Endpoint Management, Network Security, VPN, Firewalls</p>
+        </div>
+        <div class="project-card">
+            <h3>User & Systems Administration</h3>
+            <p>Managed user accounts, groups, updates, and security policies across Windows and Linux systems while supporting multiple sites.</p>
+            <p><strong>Skills:</strong> Active Directory, ServiceNow, LAPS, System Administration, Troubleshooting</p>
+        </div>
     </div>
 </section>
 
@@ -175,7 +198,7 @@ footer {
 <section id="contact">
     <h2>Contact</h2>
     <div class="card">
-        <p>Email: YOUR-EMAIL@HERE.COM</p>
+        <p>Email: <a href="mailto:tansean415@gmail.com">tansean415@gmail.com</a></p>
         <p>LinkedIn: <a href="https://www.linkedin.com/in/sean-s-tan/" target="_blank">linkedin.com/in/sean-s-tan</a></p>
         <p>GitHub: <a href="https://github.com/sean-s-tan" target="_blank">github.com/sean-s-tan</a></p>
     </div>
@@ -184,6 +207,30 @@ footer {
 <footer>
     © 2025 Sean Tan
 </footer>
+
+<script>
+// Smooth scroll for nav links
+const navLinks = document.querySelectorAll('nav a');
+const sections = document.querySelectorAll('section');
+
+navLinks.forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// Highlight active nav link
+window.addEventListener('scroll', () => {
+  let scrollPos = window.scrollY + 150;
+  sections.forEach(section => {
+    if(scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight){
+      navLinks.forEach(link => link.classList.remove('active'));
+      document.querySelector(`nav a[href="#${section.id}"]`).classList.add('active');
+    }
+  });
+});
+</script>
 
 </body>
 </html>
