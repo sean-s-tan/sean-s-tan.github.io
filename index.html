@@ -1,246 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sean Tan | Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sean Tan - Portfolio</title>
 
-<style>
-:root {
-  --bg: #0d0d0d;
-  --text: #e5e5e5;
-  --card: #151515;
-  --accent: #4f7cff;
-  --accent2: #7f5cff;
-}
+  <style>
+    :root {
+      --bg: #0f0f0f;
+      --card: #1a1a1a;
+      --text: #f0f0f0;
+      --accent: #4f7cff;
+    }
 
-* { margin:0; padding:0; box-sizing:border-box; font-family: "Inter", sans-serif; }
-body { background: var(--bg); color: var(--text); display: flex; height: 100vh; overflow: hidden; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
 
-/* Sidebar */
-.sidebar {
-  width: 260px;
-  background: linear-gradient(180deg, #111 0%, #1a1a1a 100%);
-  padding: 40px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  border-right: 1px solid #222;
-  position: fixed;
-  height: 100%;
-  overflow-y: auto;
-}
+    /* SIDEBAR */
+    .sidebar {
+      width: 260px;
+      height: 100vh;
+      background: #111;
+      padding: 30px 20px;
+      position: fixed;
+      overflow-y: auto;
+      border-right: 1px solid #333;
+    }
 
-.sidebar nav a {
-  display: block;
-  margin: 12px 0;
-  text-decoration: none;
-  color: var(--text);
-  font-size: 18px;
-  transition: 0.25s;
-}
+    .sidebar h2 {
+      margin-top: 0;
+      font-size: 26px;
+      text-align: center;
+    }
 
-.sidebar nav a:hover {
-  color: var(--accent);
-  transform: translateX(6px);
-  text-shadow: 0 0 8px var(--accent);
-}
+    .sidebar a {
+      display: block;
+      margin: 14px 0;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 18px;
+    }
 
-.sidebar .resume-btn {
-  margin-top: 20px;
-  padding: 10px 16px;
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
-  color: white;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: 600;
-  text-align: center;
-  transition: 0.3s;
-}
-.sidebar .resume-btn:hover {
-  transform: scale(1.06);
-  box-shadow: 0 0 18px var(--accent2);
-}
+    /* MAIN CONTENT */
+    .content {
+      margin-left: 260px;
+      padding: 40px;
+      width: calc(100% - 260px);
+    }
 
-/* Main content */
-.content {
-  flex: 1;
-  overflow-y: auto;
-  padding: 50px;
-  padding-left: 320px;
-  scroll-behavior: smooth;
-}
+    h1, h2 {
+      color: white;
+      font-weight: 600;
+    }
 
-section {
-  margin-bottom: 100px;
-  animation: fadeIn 1.1s ease;
-}
+    section {
+      margin-bottom: 60px;
+      max-width: 900px;
+    }
 
-/* Reduce block width */
-section p, section h1 {
-  max-width: 750px;
-}
+    p {
+      line-height: 1.6;
+      font-size: 17px;
+    }
 
-.job-card {
-  background: var(--card);
-  padding: 20px;
-  border-radius: 12px;
-  margin: 15px 0;
-  border: 1px solid #222;
-  max-width: 750px;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.job-card:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-  border-color: var(--accent);
-}
+    /* JOB CARDS (optional cleanup) */
+    .job-card {
+      background: var(--card);
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid #333;
+      margin-top: 20px;
+      max-width: 750px;
+    }
 
-@keyframes fadeIn {
-  from { opacity:0; transform:translateY(20px); }
-  to { opacity:1; transform:translateY(0); }
-}
+    /* PROFILE PHOTO */
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent);
+      margin-right: 20px;
+    }
 
-/* Back to Top */
-#backToTop {
-  position: fixed; bottom: 30px; right: 30px;
-  padding: 12px 18px; font-size: 16px;
-  border: none; border-radius: 50px; cursor: pointer;
-  background: var(--accent); color: white; box-shadow: 0 0 12px var(--accent);
-  display: none; transition: 0.3s;
-}
-#backToTop:hover { transform: scale(1.07); box-shadow: 0 0 18px var(--accent2); }
-</style>
+    /* HERO LAYOUT */
+    #hero {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      margin-bottom: 50px;
+    }
+
+  </style>
 </head>
+
 <body>
 
-<!-- Sidebar -->
-<div class="sidebar">
-  <nav>
-    <a href="#hero">Home</a>
-    <a href="#about">About</a>
-    <a href="#work">Work</a>
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <h2>Sean Tan</h2>
+    <a href="#hero">About</a>
+    <a href="#experience">Work Experience</a>
     <a href="#projects">Projects</a>
-    <a href="#education">Education</a>
     <a href="#certs">Certifications</a>
     <a href="#contact">Contact</a>
-  </nav>
-  <a class="resume-btn" href="https://drive.google.com/file/d/1aOA_ybkdGNjQ6aEqpNvFY6koMiox4PzK/view?usp=sharing" target="_blank">Resume</a>
-</div>
+  </div>
 
-<div class="content">
+  <!-- MAIN CONTENT -->
+  <div class="content">
 
-  <!-- Hero -->
-  <section id="hero" style="display:flex; align-items:center; gap:30px;">
-    <img src="headshot.png" 
-      alt="Sean Tan"
-      style="width:150px; height:150px; border-radius:50%; object-fit:cover; border:3px solid var(--accent);">
+    <!-- HERO SECTION -->
+    <section id="hero">
+      <img src="headshot.png" alt="Sean Tan" class="profile-pic">
 
-    <div>
-      <h1>Hi, I'm Sean Tan</h1>
-      <p>IT Specialist with 3 years of experience across multiple Bay Area companies. Skilled in systems administration, helpdesk, networking, device deployment, Microsoft 365, and security best practices.</p>
-    </div>
-  </section>
+      <div>
+        <h1>Hi, I'm Sean Tan</h1>
+        <p>
+          IT Specialist with 3 years of experience supporting systems, networks, and end-users across multiple companies.
+          Skilled in troubleshooting, device deployment, security, and systems administration.
+        </p>
+      </div>
+    </section>
 
-  <!-- About -->
-  <section id="about">
-    <h1>About Me</h1>
-    <p>I provide IT solutions for businesses and clients, specializing in system administration, troubleshooting, and deployments. I have worked freelance and supported university IT environments, enhancing efficiency and user satisfaction.</p>
-  </section>
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <h2>Work Experience</h2>
 
-  <!-- Work (formerly Experience) -->
-  <section id="work">
-    <h1>Work Experience</h1>
+      <div class="job-card">
+        <h3>IT Specialist (Contract)</h3>
+        <p><strong>Multiple Companies – 2023–Present</strong></p>
+        <ul>
+          <li>Provided helpdesk support for Windows, macOS, and network troubleshooting.</li>
+          <li>Performed system updates, device imaging, and MDM deployments.</li>
+          <li>Configured security settings, MFA, and Microsoft 365 access.</li>
+        </ul>
+      </div>
+    </section>
 
-    <div class="job-card">
-      <h3>IT Field Technician</h3>
-      <p>UCSF — Sep 2025 to Nov 2025 · 3 mos</p>
-      <p>Delivered on-site IT support for 1,000+ staff. Managed EPIC Hyperspace, AD, Duo, ServiceNow, System Pulse, and Intune MDM. Maintained workstations, printers, and phones.</p>
-    </div>
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <p>More projects coming soon...</p>
+    </section>
 
-    <div class="job-card">
-      <h3>EPIC TDR Analyst</h3>
-      <p>UCSF — Aug 2025 to Sep 2025 · 2 mos</p>
-      <p>Performed readiness testing, validated printers, kiosks, workflows, configured VPSX printing, and collaborated with teams to ensure smooth go-live.</p>
-    </div>
+    <!-- CERTIFICATIONS -->
+    <section id="certs">
+      <h2>Certifications</h2>
 
-    <div class="job-card">
-      <h3>Desktop Deployment Tech</h3>
-      <p>UCSF Benioff Children’s Hospitals — May 2025 to Aug 2025 · 4 mos</p>
-      <p>Deployed & imaged 500+ medical PCs. Configured AD, printers, EPIC Hyperspace, Imprivata. Maintained inventory & asset tracking.</p>
-    </div>
-
-    <div class="job-card">
-      <h3>IT Technician (Freelance)</h3>
-      <p>Self-Employed — Jun 2022 to May 2025 · 3 yrs</p>
-      <p>Provided IT consulting, server setup, data recovery, networking, and optimized client systems.</p>
-    </div>
-
-    <div class="job-card">
-      <h3>IT Support Specialist</h3>
-      <p>San Francisco State University — Feb 2022 to May 2025 · 3 yrs 4 mos</p>
-      <p>Supported faculty, staff, students on Windows/macOS. Installed software & VPNs. Managed AD onboarding/offboarding. Troubleshot hardware, networking, and classroom tech.</p>
-    </div>
-  </section>
-
-  <!-- Projects -->
-  <section id="projects">
-    <h1>Projects</h1>
-    <div class="job-card">
-      <h3>Dignity Health → UCSF Go-Live</h3>
-      <p>Oct 2025 — UCSF</p>
-      <p>Supported migration of Dignity Health systems to UCSF. Configured user access, validated workflows, troubleshot EPIC & Imprivata.</p>
-    </div>
-  </section>
-
-  <!-- Education -->
-  <section id="education">
-    <h1>Education</h1>
-    <div class="job-card">
-      <h3>San Francisco State University</h3>
-      <p>B.S. in Information Systems</p>
-      <p>2021 – 2025</p>
-    </div>
-  </section>
-
-  <!-- Certifications -->
-  <section id="certs">
-    <h1>Certifications</h1>
-
-    <div class="job-card">
-      <ul style="line-height:1.8; font-size:18px;">
-        <li><a href="https://www.coursera.org/account/accomplishments/verify/7QS927F86ZD8" target="_blank">Google Cybersecurity Certificate</a></li>
-        <li><a href="https://www.coursera.org/account/accomplishments/verify/JNJUEOQ4OU4C" target="_blank">IT Support Fundamentals</a></li>
-        <li><a href="https://www.coursera.org/account/accomplishments/verify/SUPDWJ4IM3P3" target="_blank">Technical Support Basics</a></li>
-        <li><a href="https://www.coursera.org/account/accomplishments/specialization/1VDWPD84NXVX" target="_blank">Google IT Support Specialization</a></li>
-        <li><a href="https://www.coursera.org/account/accomplishments/professional-cert/certificate/0FC6N6GPS2C8" target="_blank">Professional IT Support Certification</a></li>
+      <ul>
+        <li><a href="https://www.coursera.org/account/accomplishments/verify/7QS927F86ZD8" target="_blank">Google IT Support</a></li>
+        <li><a href="https://www.coursera.org/account/accomplishments/verify/JNJUEOQ4OU4C" target="_blank">Technical Support Fundamentals</a></li>
+        <li><a href="https://www.coursera.org/account/accomplishments/verify/SUPDWJ4IM3P3" target="_blank">System Administration</a></li>
+        <li><a href="https://www.coursera.org/account/accomplishments/specialization/1VDWPD84NXVX" target="_blank">Google Tech Support Specialization</a></li>
+        <li><a href="https://www.coursera.org/account/accomplishments/professional-cert/certificate/0FC6N6GPS2C8" target="_blank">Professional Certificate</a></li>
       </ul>
-    </div>
+    </section>
 
-  </section>
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email: <strong>tansean415@gmail.com</strong></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/sean-s-tan/" target="_blank">linkedin.com/in/sean-s-tan</a></p>
+    </section>
 
-  <!-- Contact -->
-  <section id="contact">
-    <h1>Contact</h1>
-    <p>Email: <a href="mailto:tansean415@gmail.com">tansean415@gmail.com</a></p>
-    <p>Phone: <a href="tel:4156098862">415-609-8862</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/sean-s-tan/" target="_blank">/in/sean-s-tan</a></p>
-  </section>
-</div>
-
-<button id="backToTop">▲ Top</button>
-
-<script>
-// Back to Top
-const topBtn = document.getElementById('backToTop');
-window.addEventListener('scroll', () => { 
-  topBtn.style.display = window.scrollY > 300 ? 'block' : 'none'; 
-});
-topBtn.addEventListener('click', () => { 
-  window.scrollTo({ top: 0, behavior: 'smooth' }); 
-});
-</script>
-
+  </div>
 </body>
+
 </html>
