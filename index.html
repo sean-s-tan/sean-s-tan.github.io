@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sean Tan | Portfolio</title>
 <!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Esteban&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
@@ -23,15 +23,13 @@
 body { 
   background: var(--bg); 
   color: var(--text); 
-  display: flex; 
   font-family: 'Inter', sans-serif; 
+  line-height: 1.6;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Esteban', serif;
-}
+h1,h2,h3,h4,h5,h6 { font-family: 'Poppins', sans-serif; }
 
-/* Sidebar */
+/* Sidebar / Navbar */
 .sidebar {
   width: 260px;
   background: linear-gradient(180deg, #111 0%, #1a1a1a 100%);
@@ -43,6 +41,7 @@ h1, h2, h3, h4, h5, h6 {
   position: fixed;
   height: 100%;
   overflow-y: auto;
+  transition: transform 0.3s ease;
 }
 
 .sidebar nav a {
@@ -51,7 +50,6 @@ h1, h2, h3, h4, h5, h6 {
   text-decoration: none;
   color: var(--text);
   font-size: 18px;
-  transition: 0.3s ease;
   position: relative;
 }
 
@@ -87,20 +85,52 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 0 18px var(--accent2);
 }
 
+/* Mobile Navbar */
+.mobile-nav {
+  display: none;
+  width: 100%;
+  background: var(--bg);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  padding: 15px 20px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #222;
+}
+
+.mobile-nav .menu-toggle {
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.mobile-nav nav {
+  display: none;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.mobile-nav nav a {
+  font-size: 18px;
+  color: var(--text);
+}
+
 /* Content */
 .content {
   flex: 1;
   padding: 50px;
-  padding-left: 320px; /* keep space for sidebar */
+  padding-left: 320px;
   scroll-behavior: smooth;
+  transition: padding-left 0.3s ease;
 }
 
-/* Sections */
-section {
-  margin-bottom: 100px;
-}
+section { margin-bottom: 100px; }
 
-/* Job/project/certification card hover effect */
+/* Job/project/cert card hover */
 .job-card {
   background: var(--card);
   padding: 20px;
@@ -113,11 +143,11 @@ section {
 
 .job-card:hover {
   transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 8px 25px rgba(79, 124, 255, 0.5);
+  box-shadow: 0 8px 25px rgba(79,124,255,0.5);
   border-color: var(--accent);
 }
 
-/* Certification icon styling */
+/* Certification icon */
 .cert-icon {
   color: var(--accent);
   margin-right: 10px;
@@ -134,6 +164,14 @@ section {
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .sidebar { transform: translateX(-100%); position: fixed; z-index: 100; }
+  .content { padding-left: 20px; padding-top: 80px; }
+  .mobile-nav { display: flex; }
+  .mobile-nav nav.show { display: flex; }
 }
 </style>
 </head>
@@ -153,15 +191,29 @@ section {
   <a class="resume-btn" href="https://drive.google.com/file/d/1aOA_ybkdGNjQ6aEqpNvFY6koMiox4PzK/view?usp=sharing" target="_blank">Resume</a>
 </div>
 
+<!-- Mobile Navbar -->
+<div class="mobile-nav">
+  <div><strong>Sean Tan</strong></div>
+  <div class="menu-toggle"><i class="fa fa-bars"></i></div>
+  <nav>
+    <a href="#hero">Home</a>
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#projects">Projects</a>
+    <a href="#education">Education</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#contact">Contact</a>
+    <a class="resume-btn" href="https://drive.google.com/file/d/1aOA_ybkdGNjQ6aEqpNvFY6koMiox4PzK/view?usp=sharing" target="_blank">Resume</a>
+  </nav>
+</div>
+
 <!-- Main Content -->
 <div class="content">
 
 <!-- HERO -->
-<section id="hero" class="fade-in" style="display:flex; align-items:center; gap:25px;">
-  <img src="headshot.png" 
-       alt="Sean Tan"
+<section id="hero" class="fade-in" style="display:flex; align-items:center; gap:25px; flex-wrap: wrap;">
+  <img src="headshot.png" alt="Sean Tan"
        style="width:150px; height:150px; border-radius:50%; object-fit:cover; border:3px solid var(--accent);">
-
   <div>
     <h1>Hi, I'm Sean</h1>
     <p>IT Specialist with 3 years of experience supporting systems, networks, Microsoft 365, and security across Bay Area companies.</p>
@@ -174,34 +226,29 @@ section {
   <p>I provide IT solutions for businesses and clients, specializing in system administration, troubleshooting, deployments, and security best practices. Outside of work, I enjoy video games, running, and lifting.</p>
 </section>
 
-<!-- WORK EXPERIENCE -->
+<!-- WORK -->
 <section id="work" class="fade-in">
   <h1>Work Experience</h1>
-
   <div class="job-card">
     <h3>IT Field Technician — UCSF</h3>
     <p>Sep 2025 – Nov 2025 • 3 months</p>
     <p>Supported 1,000+ staff. Managed EPIC, AD, Intune, printers, phones, Duo, ServiceNow.</p>
   </div>
-
   <div class="job-card">
     <h3>EPIC TDR Analyst — UCSF</h3>
     <p>Aug 2025 – Sep 2025 • 2 months</p>
     <p>Performed hospital readiness testing, validated workflows, printing, EPIC devices, kiosks.</p>
   </div>
-
   <div class="job-card">
     <h3>Desktop Deployment Tech — UCSF Benioff</h3>
     <p>May 2025 – Aug 2025 • 4 months</p>
     <p>Imaged & deployed 500+ clinical workstations. Configured AD, printers, EPIC, Imprivata.</p>
   </div>
-
   <div class="job-card">
     <h3>IT Technician — Freelance</h3>
     <p>Jun 2022 – May 2025 • 3 years</p>
     <p>Provided networking, server setup, troubleshooting, system optimization, client support.</p>
   </div>
-
   <div class="job-card">
     <h3>IT Support Specialist — SFSU</h3>
     <p>Feb 2022 – May 2025 • 3 years 4 months</p>
@@ -231,31 +278,26 @@ section {
 <!-- CERTIFICATIONS -->
 <section id="certifications" class="fade-in">
   <h1>Certifications</h1>
-
   <div class="job-card">
     <h3><i class="fa-solid fa-shield-halved cert-icon"></i>
     <a href="https://www.coursera.org/account/accomplishments/verify/7QS927F86ZD8" target="_blank">Google IT Support Professional Certificate</a></h3>
     <p>Coursera · Completed</p>
   </div>
-
   <div class="job-card">
     <h3><i class="fa-solid fa-desktop cert-icon"></i>
     <a href="https://www.coursera.org/account/accomplishments/verify/JNJUEOQ4OU4C" target="_blank">Technical Support Fundamentals</a></h3>
     <p>Coursera · Completed</p>
   </div>
-
   <div class="job-card">
     <h3><i class="fa-solid fa-network-wired cert-icon"></i>
     <a href="https://www.coursera.org/account/accomplishments/verify/SUPDWJ4IM3P3" target="_blank">The Bits and Bytes of Computer Networking</a></h3>
     <p>Coursera · Completed</p>
   </div>
-
   <div class="job-card">
     <h3><i class="fa-solid fa-book-open cert-icon"></i>
     <a href="https://www.coursera.org/account/accomplishments/specialization/1VDWPD84NXVX" target="_blank">Google IT Support Specialization</a></h3>
     <p>Coursera · Completed</p>
   </div>
-
   <div class="job-card">
     <h3><i class="fa-solid fa-lock cert-icon"></i>
     <a href="https://www.coursera.org/account/accomplishments/professional-cert/certificate/0FC6N6GPS2C8" target="_blank">Google Cybersecurity Professional Certificate</a></h3>
@@ -273,10 +315,10 @@ section {
 
 </div>
 
-<!-- Scroll Animation Script -->
+<!-- JS: Scroll Animation + Mobile Toggle -->
 <script>
+// Fade-in sections
 const sections = document.querySelectorAll('section');
-
 function revealOnScroll() {
   const windowBottom = window.innerHeight;
   sections.forEach(section => {
@@ -286,12 +328,16 @@ function revealOnScroll() {
     }
   });
 }
-
-// Initialize fade-in
 sections.forEach(section => section.classList.add('fade-in'));
-
 window.addEventListener('scroll', revealOnScroll);
 window.addEventListener('load', revealOnScroll);
+
+// Mobile menu toggle
+const toggleBtn = document.querySelector('.menu-toggle');
+const mobileNav = document.querySelector('.mobile-nav nav');
+toggleBtn.addEventListener('click', () => {
+  mobileNav.classList.toggle('show');
+});
 </script>
 
 </body>
