@@ -1,0 +1,217 @@
+/* =========================
+   VARIABLES
+========================= */
+:root {
+  --bg: #0d0d0d;
+  --text: #e5e5e5;
+  --card: #151515;
+  --accent: #4f7cff;
+  --accent2: #7f5cff;
+}
+
+/* =========================
+   RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================
+   FONTS
+========================= */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* =========================
+   SIDEBAR / NAVBAR
+========================= */
+.sidebar {
+  width: 260px;
+  background: linear-gradient(180deg, #111 0%, #1a1a1a 100%);
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-right: 1px solid #222;
+  position: fixed;
+  height: 100%;
+  overflow-y: auto;
+  transition: transform 0.3s ease;
+}
+
+.sidebar nav a {
+  display: block;
+  margin: 12px 0;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 18px;
+  position: relative;
+}
+
+.sidebar nav a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+}
+
+.sidebar nav a:hover::after {
+  width: 100%;
+}
+
+.sidebar .resume-btn {
+  margin-top: 20px;
+  padding: 10px 16px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.sidebar .resume-btn:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 18px var(--accent2);
+}
+
+/* =========================
+   MOBILE NAVBAR
+========================= */
+.mobile-nav {
+  display: none;
+  width: 100%;
+  background: var(--bg);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  padding: 15px 20px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #222;
+}
+
+.mobile-nav .menu-toggle {
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.mobile-nav nav {
+  display: none;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.mobile-nav nav a {
+  font-size: 18px;
+  color: var(--text);
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+.content {
+  flex: 1;
+  padding: 50px 20px;
+  scroll-behavior: smooth;
+  transition: padding-left 0.3s ease;
+  max-width: 750px;
+  margin: 0 auto; /* centers content */
+}
+
+section {
+  margin-bottom: 100px;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+#hero {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+/* =========================
+   JOB / PROJECT / CERTIFICATION CARDS
+========================= */
+.job-card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 12px;
+  margin: 15px 0;
+  border: 1px solid #222;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.job-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(79,124,255,0.5);
+  border-color: var(--accent);
+}
+
+/* =========================
+   CERT ICON
+========================= */
+.cert-icon {
+  color: var(--accent);
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+/* =========================
+   FADE-IN ANIMATION
+========================= */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 900px) {
+  .sidebar {
+    transform: translateX(-100%);
+    position: fixed;
+    z-index: 100;
+  }
+  .content {
+    padding-left: 20px;
+    padding-top: 80px;
+    max-width: 100%;
+  }
+  .mobile-nav {
+    display: flex;
+  }
+  .mobile-nav nav.show {
+    display: flex;
+  }
+}
