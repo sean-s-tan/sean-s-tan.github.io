@@ -1,128 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Sean Tan | Systems Support Analyst</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --bg:#0b0f17;
-  --card:#121a2a;
-  --text:#e6edf7;
-  --muted:#9aa7bd;
+  --bg:#0b0f14;
+  --card:#121926;
+  --text:#e8edf5;
+  --muted:#9aa6b2;
   --accent:#4f8cff;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:Inter;}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Inter;
+}
 
 body{
   background:var(--bg);
   color:var(--text);
-  line-height:1.6;
+  line-height:1.7;
+  overflow-x:hidden;
 }
 
-a{color:var(--accent);text-decoration:none}
-
+/* layout */
 .container{
-  max-width:1000px;
+  max-width:920px;
   margin:auto;
-  padding:60px 20px;
+  padding:70px 20px;
 }
 
 /* HERO */
 .hero{
-  display:flex;
-  align-items:center;
-  gap:30px;
-  flex-wrap:wrap;
-  margin-bottom:60px;
-}
-
-.hero img{
-  width:140px;
-  height:140px;
-  border-radius:50%;
-  border:3px solid var(--accent);
+  opacity:0;
+  transform:translateY(20px);
+  animation:fadeUp 0.8s ease forwards;
 }
 
 .hero h1{
-  font-size:40px;
-  font-weight:700;
+  font-size:44px;
+  font-weight:600;
+  letter-spacing:-0.5px;
 }
 
 .hero p{
   color:var(--muted);
-  max-width:600px;
+  margin-top:10px;
+  max-width:700px;
 }
 
-/* SECTION */
-.section{
-  margin-bottom:50px;
+/* LINKS */
+.links{
+  margin-top:15px;
 }
+
+.links a{
+  margin-right:15px;
+  color:var(--accent);
+  text-decoration:none;
+}
+
+/* SECTION ANIMATION */
+.section{
+  margin-top:45px;
+  opacity:0;
+  transform:translateY(25px);
+  animation:fadeUp 0.8s ease forwards;
+  animation-delay:0.2s;
+  animation-fill-mode:forwards;
+}
+
+.section:nth-child(3){animation-delay:0.2s;}
+.section:nth-child(4){animation-delay:0.3s;}
+.section:nth-child(5){animation-delay:0.4s;}
+.section:nth-child(6){animation-delay:0.5s;}
+.section:nth-child(7){animation-delay:0.6s;}
+.section:nth-child(8){animation-delay:0.7s;}
 
 .section h2{
-  font-size:22px;
-  margin-bottom:15px;
-  border-left:4px solid var(--accent);
+  font-size:16px;
+  font-weight:500;
+  color:var(--text);
+  border-left:3px solid var(--accent);
   padding-left:10px;
+  margin-bottom:15px;
 }
 
 /* CARD */
 .card{
   background:var(--card);
-  padding:20px;
-  border-radius:12px;
-  margin-bottom:15px;
-  transition:0.2s;
+  padding:18px;
+  border-radius:10px;
+  margin-bottom:12px;
+  transition:transform 0.25s ease, background 0.25s ease;
 }
 
 .card:hover{
   transform:translateY(-3px);
+  background:#162033;
 }
 
-/* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:15px;
+.meta{
+  color:var(--muted);
+  font-size:14px;
+  margin-top:4px;
 }
 
 /* TAGS */
 .tag{
   display:inline-block;
-  padding:5px 10px;
-  margin:5px 5px 0 0;
-  background:#1c2740;
-  border-radius:8px;
+  background:#1b2433;
+  padding:4px 8px;
+  margin:3px 3px 0 0;
+  border-radius:6px;
   font-size:12px;
   color:var(--muted);
 }
 
-/* HEADER META */
-.meta{
-  color:var(--muted);
-  font-size:14px;
+/* divider */
+hr{
+  border:none;
+  border-top:1px solid #1d2633;
+  margin:35px 0;
 }
 
-/* BUTTON */
-.btn{
-  display:inline-block;
-  padding:10px 15px;
-  background:var(--accent);
-  color:white;
-  border-radius:8px;
-  margin-top:10px;
-}
-
-/* MOBILE */
-@media(max-width:600px){
-  .hero h1{font-size:28px;}
+/* animations */
+@keyframes fadeUp{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 </style>
+
 </head>
 
 <body>
@@ -131,28 +149,34 @@ a{color:var(--accent);text-decoration:none}
 
 <!-- HERO -->
 <div class="hero">
-  <img src="headshot.png" alt="Sean Tan">
-  <div>
-    <h1>Sean Tan</h1>
-    <p>Systems Support Analyst @ UCSF — Enterprise IT, Identity & Access Management, Endpoint Engineering, and Healthcare Systems Support.</p>
-    <p class="meta">San Francisco, CA • Windows • macOS • IAM • Epic Systems • Intune • Jamf</p>
-    <a class="btn" href="https://drive.google.com/file/d/1aOA_ybkdGNjQ6aEqpNvFY6koMiox4PzK/view" target="_blank">View Resume</a>
+  <h1>Sean Tan</h1>
+  <p>Systems Support Analyst specializing in Identity & Access Management, Endpoint Engineering, and Enterprise Healthcare IT infrastructure supporting mission-critical hospital environments.</p>
+
+  <p class="meta">
+    San Francisco, CA • UCSF • IAM • Intune • Jamf • Epic Systems • Microsoft 365
+  </p>
+
+  <div class="links">
+    <a href="https://docs.google.com/document/d/1vMyOjoqXnOFLeDWb4vUq7reB1vUgciDQAV2CLhjzUIo/edit?usp=sharing">Resume</a>
+    <a href="https://www.linkedin.com/in/sean-s-tan/">LinkedIn</a>
   </div>
 </div>
 
-<!-- ABOUT -->
-<div class="section">
-  <h2>About</h2>
-  <div class="card">
-    Systems Support Analyst with enterprise healthcare IT experience supporting mission-critical systems, identity infrastructure, and endpoint environments across UCSF.
+<hr>
 
-    I specialize in IAM, endpoint management, and large-scale clinical IT operations.
+<!-- SUMMARY -->
+<div class="section">
+  <h2>Overview</h2>
+  <div class="card">
+    Enterprise IT professional with experience supporting large-scale healthcare environments, identity systems, and endpoint infrastructure across UCSF hospital systems.
+
+    Focused on IAM operations, endpoint lifecycle management, and clinical system reliability.
   </div>
 </div>
 
 <!-- SKILLS -->
 <div class="section">
-  <h2>Core Skills</h2>
+  <h2>Technical Skills</h2>
   <div class="card">
 
     <strong>Identity & Access Management</strong><br>
@@ -164,12 +188,12 @@ a{color:var(--accent);text-decoration:none}
 
     <br><br>
 
-    <strong>Endpoint Management</strong><br>
+    <strong>Endpoint Engineering</strong><br>
     <span class="tag">Intune</span>
     <span class="tag">Jamf Pro</span>
     <span class="tag">Windows</span>
     <span class="tag">macOS</span>
-    <span class="tag">Device Imaging</span>
+    <span class="tag">Imaging</span>
     <span class="tag">Patch Management</span>
 
     <br><br>
@@ -181,14 +205,6 @@ a{color:var(--accent);text-decoration:none}
     <span class="tag">Imprivata</span>
     <span class="tag">GlobalProtect VPN</span>
 
-    <br><br>
-
-    <strong>Networking</strong><br>
-    <span class="tag">DNS</span>
-    <span class="tag">DHCP</span>
-    <span class="tag">TCP/IP</span>
-    <span class="tag">VPN Support</span>
-
   </div>
 </div>
 
@@ -199,25 +215,37 @@ a{color:var(--accent);text-decoration:none}
   <div class="card">
     <strong>Systems Support Analyst — UCSF</strong>
     <div class="meta">Mar 2026 – Present</div>
-    <p>Enterprise IT support for clinical and administrative systems, IAM administration, endpoint management, and infrastructure collaboration across UCSF.</p>
+    <p>Enterprise IT support for clinical and administrative systems. Manage IAM workflows including provisioning, RBAC, and access control. Administer Intune, Jamf Pro, Entra ID, Duo MFA, ServiceNow, and Epic Systems.</p>
   </div>
 
   <div class="card">
     <strong>IT Field Technician — UCSF Health</strong>
     <div class="meta">Sep 2025 – Nov 2025</div>
-    <p>Supported 1,000+ users, Epic systems, Active Directory, Intune, and clinical hardware environments.</p>
+    <p>Supported 1,000+ users across hospital environments. Managed endpoint devices, Epic systems, authentication issues, and ServiceNow incident workflows.</p>
   </div>
 
   <div class="card">
     <strong>EPIC TDR Analyst — UCSF</strong>
     <div class="meta">Aug 2025 – Sep 2025</div>
-    <p>Validated Epic workflows, device readiness, and clinical system go-live preparation.</p>
+    <p>Validated Epic system readiness through Technical Dress Rehearsal testing. Ensured workflow accuracy, access control validation, and deployment readiness.</p>
   </div>
 
   <div class="card">
     <strong>Desktop Deployment Technician — UCSF</strong>
     <div class="meta">May 2025 – Aug 2025</div>
-    <p>Deployed 500+ endpoints, managed imaging, and supported hospital-wide workstation refresh.</p>
+    <p>Deployed 500+ clinical endpoints. Managed imaging, configuration, application deployment, and identity setup across hospital systems.</p>
+  </div>
+
+  <div class="card">
+    <strong>IT Support Intern — San Francisco State University</strong>
+    <div class="meta">Feb 2022 – May 2025</div>
+    <p>Supported enterprise IT operations for faculty and students. Managed Active Directory, VPN access, endpoint imaging, software deployment, and troubleshooting across Windows/macOS environments.</p>
+  </div>
+
+  <div class="card">
+    <strong>Freelance IT Technician</strong>
+    <div class="meta">Jun 2022 – May 2025</div>
+    <p>Delivered IT support for small businesses including networking, system configuration, data recovery, and technical troubleshooting.</p>
   </div>
 
 </div>
@@ -227,13 +255,11 @@ a{color:var(--accent);text-decoration:none}
   <h2>Projects</h2>
 
   <div class="card">
-    <strong>UCSF Enterprise Workstation Refresh</strong>
-    <p>Large-scale deployment of 500+ clinical devices including Epic, Intune, and AD integration.</p>
+    UCSF Enterprise Workstation Refresh — Large-scale deployment and imaging of 500+ hospital endpoints.
   </div>
 
   <div class="card">
-    <strong>Dignity Health → UCSF Go-Live</strong>
-    <p>Supported Epic migration, workflow validation, and clinical system readiness testing.</p>
+    Dignity Health → UCSF Epic Go-Live — Clinical workflow validation and system readiness testing.
   </div>
 
 </div>
@@ -243,30 +269,20 @@ a{color:var(--accent);text-decoration:none}
   <h2>Education</h2>
 
   <div class="card">
-    <strong>San Francisco State University</strong><br>
-    B.S. Information Technology
+    San Francisco State University — Bachelor of Science, Information Technology
   </div>
 
 </div>
 
-<!-- CERTS -->
+<!-- CERTIFICATIONS -->
 <div class="section">
   <h2>Certifications</h2>
 
   <div class="card">
-    Google IT Support • Microsoft IT Support • Google Cybersecurity • Networking Fundamentals
-  </div>
-
-</div>
-
-<!-- CONTACT -->
-<div class="section">
-  <h2>Contact</h2>
-
-  <div class="card">
-    Email: tansean415@gmail.com<br>
-    Phone: 415-609-8862<br>
-    LinkedIn: linkedin.com/in/sean-s-tan
+    Google IT Support Professional Certificate<br>
+    Microsoft IT Support Specialist Specialization<br>
+    Google Cybersecurity Certificate<br>
+    Networking Fundamentals
   </div>
 
 </div>
