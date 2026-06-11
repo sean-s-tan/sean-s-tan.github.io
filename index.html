@@ -1,76 +1,277 @@
-# Sean Tan
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sean Tan | Systems Support Analyst</title>
 
-💻 IT Specialist | Systems Support Analyst | Endpoint & Security Support
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-📍 San Francisco, CA  
-📧 tansean415@gmail.com  
-🔗 LinkedIn: https://www.linkedin.com/in/sean-s-tan/
+<style>
+:root{
+  --bg:#0b0f17;
+  --card:#121a2a;
+  --text:#e6edf7;
+  --muted:#9aa7bd;
+  --accent:#4f8cff;
+}
 
----
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter;}
 
-## 👋 About Me
+body{
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+}
 
-IT professional with 4+ years of experience supporting healthcare, education, and business environments.
+a{color:var(--accent);text-decoration:none}
 
-I specialize in:
-- Desktop & endpoint support (Windows / macOS)
-- EPIC systems support in clinical environments
-- Microsoft 365 administration
-- Device imaging & deployment at scale
-- Network troubleshooting & IT security basics
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:60px 20px;
+}
 
-Currently focused on building scalable IT infrastructure and improving end-user experience in enterprise environments.
+/* HERO */
+.hero{
+  display:flex;
+  align-items:center;
+  gap:30px;
+  flex-wrap:wrap;
+  margin-bottom:60px;
+}
 
----
+.hero img{
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  border:3px solid var(--accent);
+}
 
-## 💼 Experience Highlights
+.hero h1{
+  font-size:40px;
+  font-weight:700;
+}
 
-### UCSF – Information Technology Field Technician
-- Supported 1,000+ hospital staff across multiple departments
-- Installed and troubleshot EPIC Hyperspace, Cisco phones, Zebra printers, kiosks, and WoWs
-- Minimized downtime in clinical environments through rapid onsite support
+.hero p{
+  color:var(--muted);
+  max-width:600px;
+}
 
-### UCSF Benioff Children’s Hospitals – Desktop Deployment Technician
-- Deployed 500+ Dell & medical-grade systems
-- Managed imaging, account setup, printers, EPIC, and Imprivata configurations
+/* SECTION */
+.section{
+  margin-bottom:50px;
+}
 
-### San Francisco State University – IT Support Specialist
-- Supported faculty/students with AD accounts, VPNs, software installs, and troubleshooting
+.section h2{
+  font-size:22px;
+  margin-bottom:15px;
+  border-left:4px solid var(--accent);
+  padding-left:10px;
+}
 
-### Freelance IT Technician
-- Provided small business IT support: networking, data recovery, system setup
+/* CARD */
+.card{
+  background:var(--card);
+  padding:20px;
+  border-radius:12px;
+  margin-bottom:15px;
+  transition:0.2s;
+}
 
----
+.card:hover{
+  transform:translateY(-3px);
+}
 
-## 🧠 Skills
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:15px;
+}
 
-- Windows / macOS Administration  
-- Active Directory  
-- Microsoft 365  
-- EPIC Systems Support  
-- Device Imaging (SCCM / manual imaging)  
-- Networking Basics (DNS, DHCP, VPN)  
-- Endpoint Management  
-- IT Troubleshooting & Support
+/* TAGS */
+.tag{
+  display:inline-block;
+  padding:5px 10px;
+  margin:5px 5px 0 0;
+  background:#1c2740;
+  border-radius:8px;
+  font-size:12px;
+  color:var(--muted);
+}
 
----
+/* HEADER META */
+.meta{
+  color:var(--muted);
+  font-size:14px;
+}
 
-## 📂 Projects
+/* BUTTON */
+.btn{
+  display:inline-block;
+  padding:10px 15px;
+  background:var(--accent);
+  color:white;
+  border-radius:8px;
+  margin-top:10px;
+}
 
-- UCSF / Dignity Health Go-Live Support
-- Hospital system migration & workflow validation
-- Clinical hardware deployment & optimization
+/* MOBILE */
+@media(max-width:600px){
+  .hero h1{font-size:28px;}
+}
+</style>
+</head>
 
----
+<body>
 
-## 📜 Certifications
+<div class="container">
 
-- Google IT Support Professional Certificate  
-- Google Cybersecurity Certificate  
-- Networking Fundamentals (Coursera)
+<!-- HERO -->
+<div class="hero">
+  <img src="headshot.png" alt="Sean Tan">
+  <div>
+    <h1>Sean Tan</h1>
+    <p>Systems Support Analyst @ UCSF — Enterprise IT, Identity & Access Management, Endpoint Engineering, and Healthcare Systems Support.</p>
+    <p class="meta">San Francisco, CA • Windows • macOS • IAM • Epic Systems • Intune • Jamf</p>
+    <a class="btn" href="https://drive.google.com/file/d/1aOA_ybkdGNjQ6aEqpNvFY6koMiox4PzK/view" target="_blank">View Resume</a>
+  </div>
+</div>
 
----
+<!-- ABOUT -->
+<div class="section">
+  <h2>About</h2>
+  <div class="card">
+    Systems Support Analyst with enterprise healthcare IT experience supporting mission-critical systems, identity infrastructure, and endpoint environments across UCSF.
 
-## 🚀 Goal
+    I specialize in IAM, endpoint management, and large-scale clinical IT operations.
+  </div>
+</div>
 
-To grow into a Systems Administrator / Infrastructure Engineer role focused on enterprise IT, cloud systems, and security operations.
+<!-- SKILLS -->
+<div class="section">
+  <h2>Core Skills</h2>
+  <div class="card">
+
+    <strong>Identity & Access Management</strong><br>
+    <span class="tag">Active Directory</span>
+    <span class="tag">Microsoft Entra ID</span>
+    <span class="tag">Duo MFA</span>
+    <span class="tag">RBAC</span>
+    <span class="tag">User Provisioning</span>
+
+    <br><br>
+
+    <strong>Endpoint Management</strong><br>
+    <span class="tag">Intune</span>
+    <span class="tag">Jamf Pro</span>
+    <span class="tag">Windows</span>
+    <span class="tag">macOS</span>
+    <span class="tag">Device Imaging</span>
+    <span class="tag">Patch Management</span>
+
+    <br><br>
+
+    <strong>Enterprise Systems</strong><br>
+    <span class="tag">Epic Systems</span>
+    <span class="tag">ServiceNow</span>
+    <span class="tag">Microsoft 365</span>
+    <span class="tag">Imprivata</span>
+    <span class="tag">GlobalProtect VPN</span>
+
+    <br><br>
+
+    <strong>Networking</strong><br>
+    <span class="tag">DNS</span>
+    <span class="tag">DHCP</span>
+    <span class="tag">TCP/IP</span>
+    <span class="tag">VPN Support</span>
+
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="section">
+  <h2>Experience</h2>
+
+  <div class="card">
+    <strong>Systems Support Analyst — UCSF</strong>
+    <div class="meta">Mar 2026 – Present</div>
+    <p>Enterprise IT support for clinical and administrative systems, IAM administration, endpoint management, and infrastructure collaboration across UCSF.</p>
+  </div>
+
+  <div class="card">
+    <strong>IT Field Technician — UCSF Health</strong>
+    <div class="meta">Sep 2025 – Nov 2025</div>
+    <p>Supported 1,000+ users, Epic systems, Active Directory, Intune, and clinical hardware environments.</p>
+  </div>
+
+  <div class="card">
+    <strong>EPIC TDR Analyst — UCSF</strong>
+    <div class="meta">Aug 2025 – Sep 2025</div>
+    <p>Validated Epic workflows, device readiness, and clinical system go-live preparation.</p>
+  </div>
+
+  <div class="card">
+    <strong>Desktop Deployment Technician — UCSF</strong>
+    <div class="meta">May 2025 – Aug 2025</div>
+    <p>Deployed 500+ endpoints, managed imaging, and supported hospital-wide workstation refresh.</p>
+  </div>
+
+</div>
+
+<!-- PROJECTS -->
+<div class="section">
+  <h2>Projects</h2>
+
+  <div class="card">
+    <strong>UCSF Enterprise Workstation Refresh</strong>
+    <p>Large-scale deployment of 500+ clinical devices including Epic, Intune, and AD integration.</p>
+  </div>
+
+  <div class="card">
+    <strong>Dignity Health → UCSF Go-Live</strong>
+    <p>Supported Epic migration, workflow validation, and clinical system readiness testing.</p>
+  </div>
+
+</div>
+
+<!-- EDUCATION -->
+<div class="section">
+  <h2>Education</h2>
+
+  <div class="card">
+    <strong>San Francisco State University</strong><br>
+    B.S. Information Technology
+  </div>
+
+</div>
+
+<!-- CERTS -->
+<div class="section">
+  <h2>Certifications</h2>
+
+  <div class="card">
+    Google IT Support • Microsoft IT Support • Google Cybersecurity • Networking Fundamentals
+  </div>
+
+</div>
+
+<!-- CONTACT -->
+<div class="section">
+  <h2>Contact</h2>
+
+  <div class="card">
+    Email: tansean415@gmail.com<br>
+    Phone: 415-609-8862<br>
+    LinkedIn: linkedin.com/in/sean-s-tan
+  </div>
+
+</div>
+
+</div>
+
+</body>
+</html>
